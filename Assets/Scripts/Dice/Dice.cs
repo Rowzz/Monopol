@@ -82,7 +82,7 @@ public class Dice : MonoBehaviour {
 			if (side.OnGround())
 			{
 				diceValue = side.sideValue;
-				Debug.Log(diceValue + " has been rolled!");
+				Debug.Log(diceValue + " got rolled, yees!");
 
 			}
 		}
