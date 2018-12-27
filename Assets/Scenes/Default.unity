@@ -475,6 +475,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &138234356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1089593352712814, guid: 62dcc6356d0fd304b985b11266502d5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 772047330}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &185651159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2315,6 +2321,7 @@ GameObject:
   - component: {fileID: 840331903}
   - component: {fileID: 840331902}
   - component: {fileID: 840331901}
+  - component: {fileID: 840331906}
   m_Layer: 0
   m_Name: Default Player
   m_TagString: Untagged
@@ -2410,6 +2417,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &840331906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840331900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4c67b6dbd245c4cbf7c566a2f3bb35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dice1: {fileID: 138234356}
+  Dice2: {fileID: 1162452527}
 --- !u!1001 &907642130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3108,6 +3129,12 @@ Transform:
   m_Father: {fileID: 1497740006}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1162452527 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1089593352712814, guid: 62dcc6356d0fd304b985b11266502d5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 777244136}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1204963106
 GameObject:
   m_ObjectHideFlags: 0
