@@ -30,6 +30,46 @@ public class GameController : MonoBehaviour
                 {
                     setNextBuildingPosition(activePlayer);
                 }
+                else
+                {
+                    Building activeBuilding = getCurrentBuilding(activePlayer);
+                    PlayerFigure pf = getActivePlayer(activePlayer);
+                    
+
+                    //owned bei nobody and enough money to buy it
+                    if(activeBuilding.Owner == null && pf.balance >= activeBuilding.Price)
+                    {
+                        //show Buy-Dialog
+                        //if (form.ShowDialog() == DialogResult.Yes)
+                        //{
+                        //    pf.balance -= activeBuilding.Price;
+                        //    activeBuilding.Owner = pf;
+                        //    if(ownsEveryBuildingOfCategory(activeBuilding, pf))
+                        //    {
+                        //        addColourSetBonus(activeBuilding);
+                        //    }
+                        //}
+                    }
+                    else if(activeBuilding.Owner != null && activeBuilding.Owner != pf)
+                    {
+                        int rent = activeBuilding.getRent();
+                        //show Pay-Dialog
+                        if (pf.balance >= rent)
+                        {
+                            pf.balance -= rent;
+                        }
+                        else //sell buildings
+                        {
+
+                        }
+                    }
+                    else if(ownsEveryBuildingOfCategory(activeBuilding,pf))
+                    {
+                        //want to buy houses/hotel?
+                        //ShowDialog
+                    }
+                    
+                }
             }
         }
         else
@@ -38,12 +78,35 @@ public class GameController : MonoBehaviour
             {
                 resetDiceValues();
                 //move Player
-                movingPositionsLeft = 12;
+                movingPositionsLeft = result;
                 PlayerMoving = true;
                 
                 setNextBuildingPosition(activePlayer);
             }
         }
+    }
+
+    private bool ownsEveryBuildingOfCategory(Building activeBuilding, PlayerFigure player)
+    {
+        bool valid = true;
+        foreach(Building building in activeBuilding.gameObject.transform.parent.gameObject.GetComponentsInChildren<Building>())
+        {
+            valid = valid && building.Owner == player;
+        }
+        return valid;
+    }
+
+    private void addColourSetBonus(Building activeBuilding)
+    {
+        foreach (Building building in activeBuilding.gameObject.transform.parent.gameObject.GetComponentsInChildren<Building>())
+        {
+            building.FullSet();
+        }
+    }
+
+    private PlayerFigure getActivePlayer(int playerIndex)
+    {
+        return Players[playerIndex].GetComponent<PlayerFigure>();
     }
 
     private bool movePlayer(int playerIndex)
@@ -55,7 +118,12 @@ public class GameController : MonoBehaviour
 
     private void setNextBuildingPosition(int playerIndex)
     {
-        toPosition = Players[playerIndex].GetComponent<PlayerFigure>().currentBuilding.Next.transform.position;
+        toPosition = getCurrentBuilding(playerIndex).Next.transform.position;
+    }
+
+    private Building getCurrentBuilding(int playerIndex)
+    {
+        return getActivePlayer(playerIndex).currentBuilding;
     }
 
     private bool validRoll(out int result)
