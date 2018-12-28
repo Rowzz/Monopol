@@ -23,49 +23,54 @@ public class GameController : MonoBehaviour
     {
         if (PlayerMoving)
         {
-            if(movePlayer(activePlayer))
+            if(MovePlayer(activePlayer))
             {
                 movingPositionsLeft--;
+                Building activeBuilding;
                 if (PlayerMoving = movingPositionsLeft > 0)
                 {
-                    setNextBuildingPosition(activePlayer);
+                    SetNextBuildingPosition(activePlayer);
                 }
-                else
+                else if((activeBuilding = GetCurrentBuilding(activePlayer)).IsPayableBuilding)
                 {
-                    Building activeBuilding = getCurrentBuilding(activePlayer);
-                    PlayerFigure pf = getActivePlayer(activePlayer);
+                    ;
+                    PlayerFigure pf = GetActivePlayer(activePlayer);
                     
 
                     //owned bei nobody and enough money to buy it
-                    if(activeBuilding.Owner == null && pf.balance >= activeBuilding.Price)
+                    if(activeBuilding.Owner == null && pf.Balance >= activeBuilding.Price)
                     {
                         //show Buy-Dialog
                         //if (form.ShowDialog() == DialogResult.Yes)
                         //{
-                        //    pf.balance -= activeBuilding.Price;
-                        //    activeBuilding.Owner = pf;
-                        //    if(ownsEveryBuildingOfCategory(activeBuilding, pf))
+                        //    pf.Balance -= activeBuilding.Price;
+                        //    AddBuilding(activeBuilding,pf);
+                        //    if (OwnsEveryBuildingOfCategory(activeBuilding, pf))
                         //    {
-                        //        addColourSetBonus(activeBuilding);
+                        //        AddColourSetBonus(activeBuilding);
                         //    }
                         //}
                     }
+                    //pay rent
                     else if(activeBuilding.Owner != null && activeBuilding.Owner != pf)
                     {
-                        int rent = activeBuilding.getRent();
+                        int rent = activeBuilding.GetRent();
                         //show Pay-Dialog
-                        if (pf.balance >= rent)
+                        if (pf.Balance >= rent)
                         {
-                            pf.balance -= rent;
+                            pf.Balance -= rent;
+                            activeBuilding.Owner.Balance += rent;
                         }
                         else //sell buildings
                         {
+                            //switch Player
 
+                            //and foreach(Building building in soldBuildings){ pf.removeBuilding(activeBuilding)};
                         }
                     }
-                    else if(ownsEveryBuildingOfCategory(activeBuilding,pf))
+                    //want to buy houses/hotel?
+                    else if (OwnsEveryBuildingOfCategory(activeBuilding,pf) && !activeBuilding.IsFullyUpgraded())
                     {
-                        //want to buy houses/hotel?
                         //ShowDialog
                     }
                     
@@ -74,19 +79,25 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            if (validRoll(out int result))//Dice rolled
+            if (ValidRoll(out int result))//Dice rolled
             {
-                resetDiceValues();
+                ResetDiceValues();
                 //move Player
                 movingPositionsLeft = result;
                 PlayerMoving = true;
                 
-                setNextBuildingPosition(activePlayer);
+                SetNextBuildingPosition(activePlayer);
             }
         }
     }
 
-    private bool ownsEveryBuildingOfCategory(Building activeBuilding, PlayerFigure player)
+    private void AddBuilding(Building building, PlayerFigure player)
+    {
+        building.Owner = player;
+        player.AddBuilding(building);
+    }
+
+    private bool OwnsEveryBuildingOfCategory(Building activeBuilding, PlayerFigure player)
     {
         bool valid = true;
         foreach(Building building in activeBuilding.gameObject.transform.parent.gameObject.GetComponentsInChildren<Building>())
@@ -96,7 +107,7 @@ public class GameController : MonoBehaviour
         return valid;
     }
 
-    private void addColourSetBonus(Building activeBuilding)
+    private void AddColourSetBonus(Building activeBuilding)
     {
         foreach (Building building in activeBuilding.gameObject.transform.parent.gameObject.GetComponentsInChildren<Building>())
         {
@@ -104,29 +115,29 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private PlayerFigure getActivePlayer(int playerIndex)
+    private PlayerFigure GetActivePlayer(int playerIndex)
     {
         return Players[playerIndex].GetComponent<PlayerFigure>();
     }
 
-    private bool movePlayer(int playerIndex)
+    private bool MovePlayer(int playerIndex)
     {
         Transform PlayerTransform = Players[playerIndex].transform;
         PlayerTransform.position = Vector3.MoveTowards(PlayerTransform.position, toPosition, Time.deltaTime*10);
         return Vector3.Distance(PlayerTransform.position,toPosition) < 0.25;
     }
 
-    private void setNextBuildingPosition(int playerIndex)
+    private void SetNextBuildingPosition(int playerIndex)
     {
-        toPosition = getCurrentBuilding(playerIndex).Next.transform.position;
+        toPosition = GetCurrentBuilding(playerIndex).Next.transform.position;
     }
 
-    private Building getCurrentBuilding(int playerIndex)
+    private Building GetCurrentBuilding(int playerIndex)
     {
-        return getActivePlayer(playerIndex).currentBuilding;
+        return GetActivePlayer(playerIndex).currentBuilding;
     }
 
-    private bool validRoll(out int result)
+    private bool ValidRoll(out int result)
     {
         bool valid = true;
         result = 0;
@@ -139,7 +150,7 @@ public class GameController : MonoBehaviour
         return valid;
     }
 
-    private void resetDiceValues()
+    private void ResetDiceValues()
     {
         foreach (GameObject dice in Dices)
         {

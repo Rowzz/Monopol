@@ -204,6 +204,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 907642131}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -426,6 +431,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 1838926908}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -722,6 +732,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 1735349106}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -1119,6 +1134,11 @@ PrefabInstance:
       propertyPath: PricePerHotel
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -1426,6 +1446,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 490900638}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -1537,6 +1562,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 641651016}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -1698,6 +1728,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 711951581}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -1970,6 +2005,11 @@ PrefabInstance:
       propertyPath: PricePerHotel
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -2074,6 +2114,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 2115049129}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -2185,6 +2230,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 1445518378}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -2540,7 +2590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentBuilding: {fileID: 1593218505}
-  balance: 5000
+  Balance: 0
 --- !u!1001 &907642130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2633,6 +2683,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 1731473714}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -3466,6 +3521,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 1058954322}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -3589,6 +3649,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 17564790}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -3777,6 +3842,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 1593218503}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -3888,6 +3958,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 2018389426}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -4309,6 +4384,11 @@ PrefabInstance:
       propertyPath: PricePerHotel
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -4480,6 +4560,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 1344590735}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -4702,6 +4787,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 1892609107}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -4818,6 +4908,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 1910992665}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -4934,6 +5029,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 965346459}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -5155,6 +5255,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 2544251}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -5278,6 +5383,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 929356324}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -5389,6 +5499,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 2042460694}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -5655,6 +5770,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 1527567719}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -5771,6 +5891,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 590241349}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -6181,6 +6306,11 @@ PrefabInstance:
       propertyPath: PricePerHotel
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -6341,6 +6471,11 @@ PrefabInstance:
       propertyPath: Next
       value: 
       objectReference: {fileID: 567134562}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -6589,6 +6724,11 @@ PrefabInstance:
         type: 3}
       propertyPath: PricePerHotel
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: IsPayableBuilding
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}

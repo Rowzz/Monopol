@@ -9,9 +9,10 @@ public class Building : MonoBehaviour
     public PlayerFigure Owner;
     public int Price;
     public int[] Rent;
-    private int RentPointer=0;
+    private int RentPointer=0; //0 rent, 1: rent + colour bonus, 2: 1 house, 3: 2 houses,...,6: hotel
     public int PricePerHouse;
     public int PricePerHotel;
+    public bool IsPayableBuilding;
 
     // Start is called before the first frame update
     void Start()
@@ -23,22 +24,27 @@ public class Building : MonoBehaviour
         
     }
 
-    public void addHouse()
+    public bool IsFullyUpgraded()
     {
-        increaseRent();
+        return RentPointer == 6;
     }
 
-    private void increaseRent()
+    public void AddHouse()
+    {
+        IncreaseRent();
+    }
+
+    private void IncreaseRent()
     {
         RentPointer++;
     }
 
     public void FullSet()
     {
-        increaseRent();
+        IncreaseRent();
     }
 
-    public int getRent()
+    public int GetRent()
     {
         return Rent[RentPointer];
     }
