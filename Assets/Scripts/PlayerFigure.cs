@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Walking : MonoBehaviour
+public class PlayerFigure : MonoBehaviour
 {
-    public GameObject Dice1;
-    public GameObject Dice2;
-
-
+    public Building currentBuilding;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +14,11 @@ public class Walking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    private void Move()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        currentBuilding = other.GetComponent<Building>();
+        Debug.Log("Collider!!");
     }
 }

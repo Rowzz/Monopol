@@ -37,10 +37,10 @@ public class Dice : MonoBehaviour {
 
 			SideValueCheck();
 		}
-		else if (rb.IsSleeping() && hasLanded && diceValue == 0)
-		{
-			RollAgain();
-		}
+		//else if (rb.IsSleeping() && hasLanded && diceValue == 0)
+		//{
+		//	RollAgain();
+		//}
 	}
 
 	void RollDice()
@@ -76,7 +76,6 @@ public class Dice : MonoBehaviour {
 
 	void SideValueCheck()
 	{
-		diceValue = 0;
 		foreach (DiceSide side in diceSides)
 		{
 			if (side.OnGround())
