@@ -26,7 +26,7 @@ public class GoJail : FieldDefinition
         return;
     }
 
-    public override void Stay(PlayerFigure[] Players, int ActivePlayer, int Dicevalue)
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, GameController gameController)
     {
         return;
     }

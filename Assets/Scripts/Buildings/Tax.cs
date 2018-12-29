@@ -27,9 +27,15 @@ public class Tax : FieldDefinition
         return;
     }
 
-    public override void Stay(PlayerFigure[] Players, int ActivePlayer, int Dicevalue)
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, GameController gameController)
     {
-        Players[ActivePlayer].Balance -= Amount;
-        Debug.Log(Players[ActivePlayer].Balance);
+        if(ActivePlayer.Balance >= Amount)
+        {
+            ActivePlayer.Balance -= Amount;
+        }
+        else
+        {
+            gameController.SellFields(ActivePlayer, null, Amount - ActivePlayer.Balance);
+        }
     }
 }

@@ -27,13 +27,13 @@ public class RailwayStation : FieldDefinition
         return;
     }
 
-    public override void Stay(PlayerFigure[] Players, int ActivePlayer, int Dicevalue)
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, GameController gameController)
     {
         if(Owner == null)
         {
             //Buy?
         }
-        else if (Players[ActivePlayer] != Owner)
+        else if (ActivePlayer != Owner)
         {
             //Rent
         }

@@ -5,18 +5,17 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public GameObject[] Dices;
-    public PlayerFigure[] Players;
+    public List<PlayerFigure> Players;
     private int DiceResult;
     private bool PlayerMoving;
     private Vector3 toPosition;
     private int movingPositionsLeft;
-    private int activePlayer = 0;
-    private int PlayerMovementSpeed = 10;
+    public PlayerFigure ActivePlayer;
+    private readonly int PlayerMovementSpeed = 10;
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -24,18 +23,18 @@ public class GameController : MonoBehaviour
     {
         if (PlayerMoving)
         {
-            if (MovePlayer(activePlayer))
+            if (MovePlayer())
             {
                 movingPositionsLeft--;
-                FieldDefinition activeField = GetCurrentBuilding(activePlayer);
-                activeField.Hover(GetActivePlayer(activePlayer));
+                FieldDefinition activeField = GetCurrentBuilding();
+                activeField.Hover(ActivePlayer);
                 if (PlayerMoving = movingPositionsLeft > 0)
                 {
-                    SetNextBuildingPosition(activePlayer);
+                    SetNextBuildingPosition();
                 }
                 else
                 {
-                    activeField.Stay(Players,activePlayer,DiceResult);
+                    activeField.Stay(Players,ActivePlayer,DiceResult, this);
                 }
             }
         }
@@ -48,31 +47,60 @@ public class GameController : MonoBehaviour
                 movingPositionsLeft = DiceResult = result;
                 PlayerMoving = true;
                 
-                SetNextBuildingPosition(activePlayer);
+                SetNextBuildingPosition();
             }
         }
     }
 
-    private PlayerFigure GetActivePlayer(int playerIndex)
+    public void SellFields(PlayerFigure PlayerFrom, PlayerFigure PlayerTo, int Amount)
     {
-        return Players[playerIndex].GetComponent<PlayerFigure>();
+        if (PlayerTo != null)
+        {
+            //sell Fields till amount <=0
+            List<FieldDefinition> soldFields = new List<FieldDefinition>();
+            //but first sell houses of buildings, then sell buildings. don't forget to remove or to add "FullColourSet" of building
+            foreach (FieldDefinition field in soldFields)
+            {
+                PlayerFrom.RemoveBuilding(field);
+                field.Owner = PlayerTo;
+            }
+        }
+        else
+        {
+            //Hypothek
+            //soldFields.setLocked(true)
+        }
+        throw new System.NotImplementedException();
     }
 
-    private bool MovePlayer(int playerIndex)
+    public void NextPlayer()
     {
-        Transform PlayerTransform = Players[playerIndex].transform;
+        int index = Players.IndexOf(ActivePlayer)+1;
+        index = index >= Players.Count ? 0 : index;
+        SetActivePlayer(index);
+    }
+
+    private void SetActivePlayer(int index)
+    {
+        ActivePlayer = Players[index];
+    }
+
+
+    private bool MovePlayer()
+    {
+        Transform PlayerTransform = ActivePlayer.transform;
         PlayerTransform.position = Vector3.MoveTowards(PlayerTransform.position, toPosition, Time.deltaTime*PlayerMovementSpeed);
         return Vector3.Distance(PlayerTransform.position,toPosition) < 0.25;
     }
 
-    private void SetNextBuildingPosition(int playerIndex)
+    private void SetNextBuildingPosition()
     {
-        toPosition = GetCurrentBuilding(playerIndex).Next.transform.position;
+        toPosition = GetCurrentBuilding().Next.transform.position;
     }
 
-    private FieldDefinition GetCurrentBuilding(int playerIndex)
+    private FieldDefinition GetCurrentBuilding()
     {
-        return GetActivePlayer(playerIndex).currentField;
+        return ActivePlayer.currentField;
     }
 
     private bool ValidRoll(out int result)

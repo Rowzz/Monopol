@@ -55,69 +55,67 @@ public class Building : FieldDefinition
         return;
     }
 
-    public override void Stay(PlayerFigure[] Players, int ActivePlayer, int Dicevalue)
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, GameController gameController)
     {
-        PlayerFigure pf = Players[ActivePlayer];
-
-
         //owned bei nobody and enough money to buy it
-        if (Owner == null && pf.Balance >= Price)
+        if (Owner == null && ActivePlayer.Balance >= Price)
         {
             //show Buy-Dialog
             //if (form.ShowDialog() == DialogResult.Yes)
             //{
-            //    pf.Balance -= activeBuilding.Price;
-            //    AddBuilding(activeBuilding,pf);
+            //    pf.Balance -= Price;
+            //    AddBuilding(pf);
             //    if (OwnsEveryBuildingOfCategory(activeBuilding, pf))
             //    {
-            //        AddColourSetBonus(activeBuilding);
+            //        AddColourSetBonus();
             //    }
             //}
         }
         //pay rent
-        else if (Owner != null && Owner != pf)
+        else if (Owner != null && Owner != ActivePlayer)
         {
             int rent = GetRent();
             //show Pay-Dialog
-            if (pf.Balance >= rent)
+            if (ActivePlayer.Balance >= rent)
             {
-                pf.Balance -= rent;
+                ActivePlayer.Balance -= rent;
                 Owner.Balance += rent;
             }
             else //sell buildings
             {
                 //switch Player
-
+                int Amount = rent - ActivePlayer.Balance;
+                gameController.SellFields(ActivePlayer, Owner,Amount);
                 //and foreach(Building building in soldBuildings){ pf.removeBuilding(activeBuilding)};
             }
         }
         //want to buy houses/hotel?
-        else if (OwnsEveryBuildingOfCategory(pf) && !IsFullyUpgraded())
+        else if (OwnsEveryBuildingOfCategory(ActivePlayer) && !IsFullyUpgraded())
         {
             //ShowDialog
         }
         throw new System.NotImplementedException();
     }
 
-    private void AddBuilding(FieldDefinition building, PlayerFigure player)
+    private void AddBuilding(PlayerFigure player)
     {
-        building.Owner = player;
-        player.AddBuilding(building);
+        Owner = player;
+        player.AddBuilding(this);
     }
 
     private bool OwnsEveryBuildingOfCategory(PlayerFigure player)
     {
         bool valid = true;
-        foreach (FieldDefinition building in gameObject.transform.parent.gameObject.GetComponentsInChildren<FieldDefinition>())
+        foreach (FieldDefinition building in GetParent().GetComponentsInChildren<FieldDefinition>())
         {
             valid = valid && building.Owner == player;
         }
         return valid;
     }
 
-    private void AddColourSetBonus(Building activeBuilding)
+    private void AddColourSetBonus()
     {
-        foreach (Building building in activeBuilding.gameObject.transform.parent.gameObject.GetComponentsInChildren<Building>())
+        foreach (Building building in GetParent().GetComponentsInChildren<Building>())
         {
             building.FullSet();
         }
