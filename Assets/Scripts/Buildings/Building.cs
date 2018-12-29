@@ -49,4 +49,77 @@ public class Building : FieldDefinition
     {
         return true;
     }
+
+    public override void Hover(PlayerFigure playerFigure)
+    {
+        return;
+    }
+
+    public override void Stay(PlayerFigure[] Players, int ActivePlayer, int Dicevalue)
+    {
+        PlayerFigure pf = Players[ActivePlayer];
+
+
+        //owned bei nobody and enough money to buy it
+        if (Owner == null && pf.Balance >= Price)
+        {
+            //show Buy-Dialog
+            //if (form.ShowDialog() == DialogResult.Yes)
+            //{
+            //    pf.Balance -= activeBuilding.Price;
+            //    AddBuilding(activeBuilding,pf);
+            //    if (OwnsEveryBuildingOfCategory(activeBuilding, pf))
+            //    {
+            //        AddColourSetBonus(activeBuilding);
+            //    }
+            //}
+        }
+        //pay rent
+        else if (Owner != null && Owner != pf)
+        {
+            int rent = GetRent();
+            //show Pay-Dialog
+            if (pf.Balance >= rent)
+            {
+                pf.Balance -= rent;
+                Owner.Balance += rent;
+            }
+            else //sell buildings
+            {
+                //switch Player
+
+                //and foreach(Building building in soldBuildings){ pf.removeBuilding(activeBuilding)};
+            }
+        }
+        //want to buy houses/hotel?
+        else if (OwnsEveryBuildingOfCategory(pf) && !IsFullyUpgraded())
+        {
+            //ShowDialog
+        }
+        throw new System.NotImplementedException();
+    }
+
+    private void AddBuilding(FieldDefinition building, PlayerFigure player)
+    {
+        building.Owner = player;
+        player.AddBuilding(building);
+    }
+
+    private bool OwnsEveryBuildingOfCategory(PlayerFigure player)
+    {
+        bool valid = true;
+        foreach (FieldDefinition building in gameObject.transform.parent.gameObject.GetComponentsInChildren<FieldDefinition>())
+        {
+            valid = valid && building.Owner == player;
+        }
+        return valid;
+    }
+
+    private void AddColourSetBonus(Building activeBuilding)
+    {
+        foreach (Building building in activeBuilding.gameObject.transform.parent.gameObject.GetComponentsInChildren<Building>())
+        {
+            building.FullSet();
+        }
+    }
 }

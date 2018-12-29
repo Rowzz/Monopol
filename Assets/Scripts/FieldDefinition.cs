@@ -21,4 +21,6 @@ abstract public class FieldDefinition : MonoBehaviour
     }
 
     public abstract bool Buyable();
+    public abstract void Hover(PlayerFigure playerFigure);
+    public abstract void Stay(PlayerFigure[] Players, int ActivePlayer, int Dicevalue);
 }

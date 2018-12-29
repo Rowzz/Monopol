@@ -2019,6 +2019,7 @@ MonoBehaviour:
   Next: {fileID: 1516964593}
   Before: {fileID: 581797933}
   Owner: {fileID: 0}
+  Amount: 100
 --- !u!1001 &707606869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2769,7 +2770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52bd1ed6424fe8349b76dd2a52251653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentField: {fileID: 0}
+  currentField: {fileID: 1593218505}
   Balance: 5000
 --- !u!1001 &907642130
 PrefabInstance:
@@ -3654,7 +3655,7 @@ MonoBehaviour:
   - {fileID: 138234356}
   - {fileID: 1162452527}
   Players:
-  - {fileID: 840331900}
+  - {fileID: 840331906}
 --- !u!4 &1232722726
 Transform:
   m_ObjectHideFlags: 0
@@ -4459,6 +4460,7 @@ MonoBehaviour:
   Next: {fileID: 1656620225}
   Before: {fileID: 1516964593}
   Owner: {fileID: 0}
+  Amount: 100
 --- !u!1 &1610681738
 GameObject:
   m_ObjectHideFlags: 0
@@ -5038,6 +5040,7 @@ MonoBehaviour:
   Next: {fileID: 1847704029}
   Before: {fileID: 2800531583947863123}
   Owner: {fileID: 0}
+  Amount: 200
 --- !u!1001 &1731473713
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -20,4 +20,15 @@ public class Chest : FieldDefinition
     {
         return false;
     }
+
+    public override void Hover(PlayerFigure playerFigure)
+    {
+        return;
+    }
+
+    public override void Stay(PlayerFigure[] Players, int ActivePlayer, int Dicevalue)
+    {
+        //Draw Chest-Card
+        throw new System.NotImplementedException();
+    }
 }

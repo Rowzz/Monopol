@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tax : FieldDefinition
 {
+    public int Amount;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +20,16 @@ public class Tax : FieldDefinition
     public override bool Buyable()
     {
         return false;
+    }
+
+    public override void Hover(PlayerFigure playerFigure)
+    {
+        return;
+    }
+
+    public override void Stay(PlayerFigure[] Players, int ActivePlayer, int Dicevalue)
+    {
+        Players[ActivePlayer].Balance -= Amount;
+        Debug.Log(Players[ActivePlayer].Balance);
     }
 }

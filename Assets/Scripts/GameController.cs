@@ -5,12 +5,13 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public GameObject[] Dices;
-    public GameObject[] Players;
+    public PlayerFigure[] Players;
     private int DiceResult;
     private bool PlayerMoving;
     private Vector3 toPosition;
     private int movingPositionsLeft;
     private int activePlayer = 0;
+    private int PlayerMovementSpeed = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -26,55 +27,15 @@ public class GameController : MonoBehaviour
             if (MovePlayer(activePlayer))
             {
                 movingPositionsLeft--;
-                FieldDefinition activeField;
-                Debug.Log((activeField = GetCurrentBuilding(activePlayer)).GetType());
+                FieldDefinition activeField = GetCurrentBuilding(activePlayer);
+                activeField.Hover(GetActivePlayer(activePlayer));
                 if (PlayerMoving = movingPositionsLeft > 0)
                 {
                     SetNextBuildingPosition(activePlayer);
                 }
-                else if ((activeField = GetCurrentBuilding(activePlayer)).GetType() == typeof(Building))
+                else
                 {
-                    Building activeBuilding = (Building)activeField;
-                    PlayerFigure pf = GetActivePlayer(activePlayer);
-
-
-                    //owned bei nobody and enough money to buy it
-                    if (activeBuilding.Owner == null && pf.Balance >= activeBuilding.Price)
-                    {
-                        //show Buy-Dialog
-                        //if (form.ShowDialog() == DialogResult.Yes)
-                        //{
-                        //    pf.Balance -= activeBuilding.Price;
-                        //    AddBuilding(activeBuilding,pf);
-                        //    if (OwnsEveryBuildingOfCategory(activeBuilding, pf))
-                        //    {
-                        //        AddColourSetBonus(activeBuilding);
-                        //    }
-                        //}
-                    }
-                    //pay rent
-                    else if (activeBuilding.Owner != null && activeBuilding.Owner != pf)
-                    {
-                        int rent = activeBuilding.GetRent();
-                        //show Pay-Dialog
-                        if (pf.Balance >= rent)
-                        {
-                            pf.Balance -= rent;
-                            activeBuilding.Owner.Balance += rent;
-                        }
-                        else //sell buildings
-                        {
-                            //switch Player
-
-                            //and foreach(Building building in soldBuildings){ pf.removeBuilding(activeBuilding)};
-                        }
-                    }
-                    //want to buy houses/hotel?
-                    else if (OwnsEveryBuildingOfCategory(activeBuilding, pf) && !activeBuilding.IsFullyUpgraded())
-                    {
-                        //ShowDialog
-                    }
-
+                    activeField.Stay(Players,activePlayer,DiceResult);
                 }
             }
         }
@@ -84,35 +45,11 @@ public class GameController : MonoBehaviour
             {
                 ResetDiceValues();
                 //move Player
-                movingPositionsLeft = 25;
+                movingPositionsLeft = DiceResult = result;
                 PlayerMoving = true;
                 
                 SetNextBuildingPosition(activePlayer);
             }
-        }
-    }
-
-    private void AddBuilding(FieldDefinition building, PlayerFigure player)
-    {
-        building.Owner = player;
-        player.AddBuilding(building);
-    }
-
-    private bool OwnsEveryBuildingOfCategory(FieldDefinition activeBuilding, PlayerFigure player)
-    {
-        bool valid = true;
-        foreach(FieldDefinition building in activeBuilding.gameObject.transform.parent.gameObject.GetComponentsInChildren<FieldDefinition>())
-        {
-            valid = valid && building.Owner == player;
-        }
-        return valid;
-    }
-
-    private void AddColourSetBonus(Building activeBuilding)
-    {
-        foreach (Building building in activeBuilding.gameObject.transform.parent.gameObject.GetComponentsInChildren<Building>())
-        {
-            building.FullSet();
         }
     }
 
@@ -124,7 +61,7 @@ public class GameController : MonoBehaviour
     private bool MovePlayer(int playerIndex)
     {
         Transform PlayerTransform = Players[playerIndex].transform;
-        PlayerTransform.position = Vector3.MoveTowards(PlayerTransform.position, toPosition, Time.deltaTime);
+        PlayerTransform.position = Vector3.MoveTowards(PlayerTransform.position, toPosition, Time.deltaTime*PlayerMovementSpeed);
         return Vector3.Distance(PlayerTransform.position,toPosition) < 0.25;
     }
 

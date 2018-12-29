@@ -20,4 +20,14 @@ public class GoJail : FieldDefinition
     {
         return false;
     }
+
+    public override void Hover(PlayerFigure playerFigure)
+    {
+        return;
+    }
+
+    public override void Stay(PlayerFigure[] Players, int ActivePlayer, int Dicevalue)
+    {
+        return;
+    }
 }
