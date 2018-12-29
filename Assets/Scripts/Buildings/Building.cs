@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building : MonoBehaviour
+public class Building : FieldDefinition
 {
-    public GameObject Next;
-    public GameObject Before;
-    public PlayerFigure Owner;
     public int Price;
     public int[] Rent;
     private int RentPointer=0; //0 rent, 1: rent + colour bonus, 2: 1 house, 3: 2 houses,...,6: hotel
     public int PricePerHouse;
     public int PricePerHotel;
-    public bool IsPayableBuilding;
 
     // Start is called before the first frame update
     void Start()
@@ -47,5 +43,10 @@ public class Building : MonoBehaviour
     public int GetRent()
     {
         return Rent[RentPointer];
+    }
+
+    public override bool Buyable()
+    {
+        return true;
     }
 }

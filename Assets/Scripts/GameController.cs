@@ -23,22 +23,23 @@ public class GameController : MonoBehaviour
     {
         if (PlayerMoving)
         {
-            if(MovePlayer(activePlayer))
+            if (MovePlayer(activePlayer))
             {
                 movingPositionsLeft--;
-                Building activeBuilding;
+                FieldDefinition activeField;
+                Debug.Log((activeField = GetCurrentBuilding(activePlayer)).GetType());
                 if (PlayerMoving = movingPositionsLeft > 0)
                 {
                     SetNextBuildingPosition(activePlayer);
                 }
-                else if((activeBuilding = GetCurrentBuilding(activePlayer)).IsPayableBuilding)
+                else if ((activeField = GetCurrentBuilding(activePlayer)).GetType() == typeof(Building))
                 {
-                    ;
+                    Building activeBuilding = (Building)activeField;
                     PlayerFigure pf = GetActivePlayer(activePlayer);
-                    
+
 
                     //owned bei nobody and enough money to buy it
-                    if(activeBuilding.Owner == null && pf.Balance >= activeBuilding.Price)
+                    if (activeBuilding.Owner == null && pf.Balance >= activeBuilding.Price)
                     {
                         //show Buy-Dialog
                         //if (form.ShowDialog() == DialogResult.Yes)
@@ -52,7 +53,7 @@ public class GameController : MonoBehaviour
                         //}
                     }
                     //pay rent
-                    else if(activeBuilding.Owner != null && activeBuilding.Owner != pf)
+                    else if (activeBuilding.Owner != null && activeBuilding.Owner != pf)
                     {
                         int rent = activeBuilding.GetRent();
                         //show Pay-Dialog
@@ -69,11 +70,11 @@ public class GameController : MonoBehaviour
                         }
                     }
                     //want to buy houses/hotel?
-                    else if (OwnsEveryBuildingOfCategory(activeBuilding,pf) && !activeBuilding.IsFullyUpgraded())
+                    else if (OwnsEveryBuildingOfCategory(activeBuilding, pf) && !activeBuilding.IsFullyUpgraded())
                     {
                         //ShowDialog
                     }
-                    
+
                 }
             }
         }
@@ -83,7 +84,7 @@ public class GameController : MonoBehaviour
             {
                 ResetDiceValues();
                 //move Player
-                movingPositionsLeft = result;
+                movingPositionsLeft = 25;
                 PlayerMoving = true;
                 
                 SetNextBuildingPosition(activePlayer);
@@ -91,16 +92,16 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void AddBuilding(Building building, PlayerFigure player)
+    private void AddBuilding(FieldDefinition building, PlayerFigure player)
     {
         building.Owner = player;
         player.AddBuilding(building);
     }
 
-    private bool OwnsEveryBuildingOfCategory(Building activeBuilding, PlayerFigure player)
+    private bool OwnsEveryBuildingOfCategory(FieldDefinition activeBuilding, PlayerFigure player)
     {
         bool valid = true;
-        foreach(Building building in activeBuilding.gameObject.transform.parent.gameObject.GetComponentsInChildren<Building>())
+        foreach(FieldDefinition building in activeBuilding.gameObject.transform.parent.gameObject.GetComponentsInChildren<FieldDefinition>())
         {
             valid = valid && building.Owner == player;
         }
@@ -123,7 +124,7 @@ public class GameController : MonoBehaviour
     private bool MovePlayer(int playerIndex)
     {
         Transform PlayerTransform = Players[playerIndex].transform;
-        PlayerTransform.position = Vector3.MoveTowards(PlayerTransform.position, toPosition, Time.deltaTime*10);
+        PlayerTransform.position = Vector3.MoveTowards(PlayerTransform.position, toPosition, Time.deltaTime);
         return Vector3.Distance(PlayerTransform.position,toPosition) < 0.25;
     }
 
@@ -132,9 +133,9 @@ public class GameController : MonoBehaviour
         toPosition = GetCurrentBuilding(playerIndex).Next.transform.position;
     }
 
-    private Building GetCurrentBuilding(int playerIndex)
+    private FieldDefinition GetCurrentBuilding(int playerIndex)
     {
-        return GetActivePlayer(playerIndex).currentBuilding;
+        return GetActivePlayer(playerIndex).currentField;
     }
 
     private bool ValidRoll(out int result)

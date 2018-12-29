@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerFigure : MonoBehaviour
 {
-    public Building currentBuilding;
+    public FieldDefinition currentField;
     public int Balance;
-    private List<Building> OwnedBuildings;
+    private List<FieldDefinition> OwnedBuildings;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,16 +20,15 @@ public class PlayerFigure : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        currentBuilding = other.GetComponent<Building>();
-        Debug.Log("Collider!!");
+        currentField = other.GetComponent<FieldDefinition>();
     }
 
-    public void AddBuilding(Building building)
+    public void AddBuilding(FieldDefinition building)
     {
         OwnedBuildings.Add(building);
     }
 
-    public void RemoveBuilding(Building building)
+    public void RemoveBuilding(FieldDefinition building)
     {
         OwnedBuildings.Remove(building);
     }
