@@ -50,7 +50,7 @@ public class Building : FieldDefinition
         return;
     }
 
-    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, NotificationController notificationController)
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, DialogController DialogController)
     {
         //owned bei nobody and enough money to buy it
         if (Owner == null && ActivePlayer.Balance >= Price)
@@ -80,7 +80,7 @@ public class Building : FieldDefinition
             {
                 //switch Player
                 int Amount = rent - ActivePlayer.Balance;
-                notificationController.SellFields(ActivePlayer, Owner,Amount);
+                DialogController.SellFields(ActivePlayer, Owner,Amount);
                 //and foreach(Building building in soldBuildings){ pf.removeBuilding(activeBuilding)};
             }
         }

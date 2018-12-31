@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour
 {
     public Dice[] Dices;
     public List<PlayerFigure> Players;
-    public NotificationController notificationController;
+    public DialogController dialogController;
     public PlayerFigure ActivePlayer;
 
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
 
     public void StayOnField(FieldDefinition field, int DiceValue)
     {
-        field.Stay(Players, ActivePlayer, DiceValue, notificationController);
+        field.Stay(Players, ActivePlayer, DiceValue, dialogController);
     }
 
     public void SetDiceValue(int value)

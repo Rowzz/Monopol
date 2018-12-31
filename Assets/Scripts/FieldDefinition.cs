@@ -21,7 +21,7 @@ abstract public class FieldDefinition : MonoBehaviour
     }
 
     public abstract void Hover(PlayerFigure playerFigure);
-    public abstract void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, NotificationController notificationController);
+    public abstract void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, DialogController dialogController);
 
     public GameObject GetParent()
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NotificationController : MonoBehaviour
+public class DialogController : MonoBehaviour
 {
     public GameController gameController;
     // Start is called before the first frame update

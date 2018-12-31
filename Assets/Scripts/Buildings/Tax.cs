@@ -22,7 +22,7 @@ public class Tax : FieldDefinition
         return;
     }
 
-    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, NotificationController notificationController)
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, DialogController DialogController)
     {
         if(ActivePlayer.Balance >= Amount)
         {
@@ -30,7 +30,7 @@ public class Tax : FieldDefinition
         }
         else
         {
-            notificationController.SellFields(ActivePlayer, null, Amount - ActivePlayer.Balance);
+            DialogController.SellFields(ActivePlayer, null, Amount - ActivePlayer.Balance);
         }
     }
 }
