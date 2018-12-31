@@ -16,17 +16,12 @@ public class Utility : FieldDefinition
         
     }
 
-    public override bool Buyable()
-    {
-        return true;
-    }
-
     public override void Hover(PlayerFigure playerFigure)
     {
         return;
     }
 
-    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, GameController gameController)
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, NotificationController notificationController)
     {
         if (Owner == null)
         {

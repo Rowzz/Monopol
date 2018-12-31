@@ -11,9 +11,8 @@ public class Dice : MonoBehaviour {
 
 	Vector3 initPosition;
 
-	public int diceValue;
-
 	public DiceSide[] diceSides;
+    public GameController gameController;
 
 	void Start()
 	{
@@ -24,55 +23,48 @@ public class Dice : MonoBehaviour {
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Space) && !hasLanded)
+		if (!thrown && Input.GetKeyDown(KeyCode.Space) && gameController.IsOwnerTurn())
 		{
 			RollDice();
 		}
 
-		if (rb.IsSleeping() && !hasLanded && thrown)
+		if (!hasLanded && thrown && rb.IsSleeping())
 		{
-			hasLanded = true;
+            rb.isKinematic = hasLanded = true;
 			rb.useGravity = false;
-			rb.isKinematic = true;
 
 			SideValueCheck();
 		}
-		//else if (rb.IsSleeping() && hasLanded && diceValue == 0)
-		//{
-		//	RollAgain();
-		//}
 	}
 
-	void RollDice()
+    public void RollDice()
 	{
-		if (!thrown && !hasLanded)
-		{
-			thrown = true;
-			rb.useGravity = true;
-			rb.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
-		}
-		else if (thrown && hasLanded)
-		{
-			Reset();
-		}
-	}
+        float x = Random.Range(0, 500);
+        float y = Random.Range(0, 500);
+        float z = Random.Range(0, 500);
+        RollDice(x, y, z);
+        //int DiceIndex = GameController.Dices.IndexOf(this) ?
+        //NetworkController.SendDice(X,Y,Z, DiceIndex);
+    }
 
-	void Reset()
+    public void RollDice(float x, float y, float z)
+    {
+        Reset();
+        rb.useGravity = thrown = true;
+
+        rb.AddTorque(x, y, z);
+    }
+
+    void Reset()
 	{
 		transform.position = initPosition;
-		thrown = false;
-		hasLanded = false;
-		rb.useGravity = false;
-		rb.isKinematic = false;
+        rb.isKinematic = rb.useGravity = thrown = hasLanded = false;
 	}
 
-	void RollAgain()
-	{
-		Reset();
-		thrown = true;
-		rb.useGravity = true;
-		rb.AddTorque(Random.Range(0, 500), Random.Range(0, 500), Random.Range(0, 500));
-	}
+    public void SetDiceLock(bool status)
+    {
+        thrown = status;
+    }
 
 	void SideValueCheck()
 	{
@@ -80,9 +72,7 @@ public class Dice : MonoBehaviour {
 		{
 			if (side.OnGround())
 			{
-				diceValue = side.sideValue;
-				Debug.Log(diceValue + " got rolled, yees!");
-
+                gameController.SetDiceValue(side.sideValue);
 			}
 		}
 	}

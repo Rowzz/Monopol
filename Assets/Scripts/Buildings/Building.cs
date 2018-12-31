@@ -45,17 +45,12 @@ public class Building : FieldDefinition
         return Rent[RentPointer];
     }
 
-    public override bool Buyable()
-    {
-        return true;
-    }
-
     public override void Hover(PlayerFigure playerFigure)
     {
         return;
     }
 
-    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, GameController gameController)
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, NotificationController notificationController)
     {
         //owned bei nobody and enough money to buy it
         if (Owner == null && ActivePlayer.Balance >= Price)
@@ -85,7 +80,7 @@ public class Building : FieldDefinition
             {
                 //switch Player
                 int Amount = rent - ActivePlayer.Balance;
-                gameController.SellFields(ActivePlayer, Owner,Amount);
+                notificationController.SellFields(ActivePlayer, Owner,Amount);
                 //and foreach(Building building in soldBuildings){ pf.removeBuilding(activeBuilding)};
             }
         }

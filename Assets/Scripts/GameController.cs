@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject[] Dices;
+    public Dice[] Dices;
     public List<PlayerFigure> Players;
-    private int DiceResult;
-    private bool PlayerMoving;
-    private Vector3 toPosition;
-    private int movingPositionsLeft;
+    public NotificationController notificationController;
     public PlayerFigure ActivePlayer;
-    private readonly int PlayerMovementSpeed = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -21,56 +17,16 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerMoving)
-        {
-            if (MovePlayer())
-            {
-                movingPositionsLeft--;
-                FieldDefinition activeField = GetCurrentBuilding();
-                activeField.Hover(ActivePlayer);
-                if (PlayerMoving = movingPositionsLeft > 0)
-                {
-                    SetNextBuildingPosition();
-                }
-                else
-                {
-                    activeField.Stay(Players,ActivePlayer,DiceResult, this);
-                }
-            }
-        }
-        else
-        {
-            if (ValidRoll(out int result))//Dice rolled
-            {
-                ResetDiceValues();
-                //move Player
-                movingPositionsLeft = DiceResult = result;
-                PlayerMoving = true;
-                
-                SetNextBuildingPosition();
-            }
-        }
     }
 
-    public void SellFields(PlayerFigure PlayerFrom, PlayerFigure PlayerTo, int Amount)
+    public void StayOnField(FieldDefinition field, int DiceValue)
     {
-        if (PlayerTo != null)
-        {
-            //sell Fields till amount <=0
-            List<FieldDefinition> soldFields = new List<FieldDefinition>();
-            //but first sell houses of buildings, then sell buildings. don't forget to remove or to add "FullColourSet" of building
-            foreach (FieldDefinition field in soldFields)
-            {
-                PlayerFrom.RemoveBuilding(field);
-                field.Owner = PlayerTo;
-            }
-        }
-        else
-        {
-            //Hypothek
-            //soldFields.setLocked(true)
-        }
-        throw new System.NotImplementedException();
+        field.Stay(Players, ActivePlayer, DiceValue, notificationController);
+    }
+
+    public void SetDiceValue(int value)
+    {
+        ActivePlayer.MovePlayer(value);
     }
 
     public void NextPlayer()
@@ -83,44 +39,24 @@ public class GameController : MonoBehaviour
     private void SetActivePlayer(int index)
     {
         ActivePlayer = Players[index];
-    }
-
-
-    private bool MovePlayer()
-    {
-        Transform PlayerTransform = ActivePlayer.transform;
-        PlayerTransform.position = Vector3.MoveTowards(PlayerTransform.position, toPosition, Time.deltaTime*PlayerMovementSpeed);
-        return Vector3.Distance(PlayerTransform.position,toPosition) < 0.25;
-    }
-
-    private void SetNextBuildingPosition()
-    {
-        toPosition = GetCurrentBuilding().Next.transform.position;
-    }
-
-    private FieldDefinition GetCurrentBuilding()
-    {
-        return ActivePlayer.currentField;
-    }
-
-    private bool ValidRoll(out int result)
-    {
-        bool valid = true;
-        result = 0;
-        foreach (GameObject dice in Dices)
+        if (IsOwnerTurn())
         {
-            int value = (dice.GetComponent<Dice>()).diceValue;
-            result += value;
-            valid = valid && value > 0;
+            foreach(Dice dice in Dices)
+            {
+                dice.SetDiceLock(false);
+            }
         }
-        return valid;
+        else
+        {
+            //get Random Force and apply it
+            //dice1.RollDice(x, y, z);
+            //dice2.RollDice(x2, y2, z2);
+        }
     }
 
-    private void ResetDiceValues()
+    public bool IsOwnerTurn()
     {
-        foreach (GameObject dice in Dices)
-        {
-            (dice.GetComponent<Dice>()).diceValue = 0;
-        }
+        //check if ActivePlayer == Owner
+        return true;
     }
 }

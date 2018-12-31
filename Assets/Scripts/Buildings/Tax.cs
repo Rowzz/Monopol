@@ -17,17 +17,12 @@ public class Tax : FieldDefinition
         
     }
 
-    public override bool Buyable()
-    {
-        return false;
-    }
-
     public override void Hover(PlayerFigure playerFigure)
     {
         return;
     }
 
-    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, GameController gameController)
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, NotificationController notificationController)
     {
         if(ActivePlayer.Balance >= Amount)
         {
@@ -35,7 +30,7 @@ public class Tax : FieldDefinition
         }
         else
         {
-            gameController.SellFields(ActivePlayer, null, Amount - ActivePlayer.Balance);
+            notificationController.SellFields(ActivePlayer, null, Amount - ActivePlayer.Balance);
         }
     }
 }

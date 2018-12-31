@@ -20,9 +20,8 @@ abstract public class FieldDefinition : MonoBehaviour
         
     }
 
-    public abstract bool Buyable();
     public abstract void Hover(PlayerFigure playerFigure);
-    public abstract void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, GameController gameController);
+    public abstract void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, NotificationController notificationController);
 
     public GameObject GetParent()
     {
