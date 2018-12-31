@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public List<PlayerFigure> Players;
     public CashController CashController;
     public PlayerFigure ActivePlayer;
+    public DialogController DialogController;
 
     // Start is called before the first frame update
     void Start()

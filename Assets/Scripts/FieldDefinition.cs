@@ -32,16 +32,16 @@ abstract public class FieldDefinition : MonoBehaviour
 
     public bool OwnsEveryBuildingOfCategory()
     {
-        return GetChildsOfParent().All(Field => Field.Owner == Owner);
+        return GetChildrenOfParent().All(Field => Field.Owner == Owner);
     }
 
     public int GetOwnedChildrenCount()
     {
-        return GetChildsOfParent().Where(station => station.Owner == Owner).Count();
+        return GetChildrenOfParent().Count(Field => Field.Owner == Owner);
     }
 
-    private List<FieldDefinition> GetChildsOfParent()
+    private FieldDefinition[] GetChildrenOfParent()
     {
-        return new List<FieldDefinition>(GetParent().GetComponentsInChildren<FieldDefinition>());
+        return GetParent().GetComponentsInChildren<FieldDefinition>();
     }
 }

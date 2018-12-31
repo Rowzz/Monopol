@@ -4,6 +4,8 @@ using UnityEngine;
 public class CashController : MonoBehaviour
 {
     public GameController gameController;
+    private DialogController DialogController { get {return gameController.DialogController; } }
+    private bool ReadOnly { get { return !gameController.IsOwnerTurn(); } }
 
     //DON'T FORGET TO SET READONLY!!
     //can be called with ReadOnly()
@@ -64,15 +66,14 @@ public class CashController : MonoBehaviour
     {
         if (ActivePlayer.Balance >= Price)
         {
-            //showDialog
-            bool status = true;
-            if (status) //Buy
-            {
-                ActivePlayer.Balance -= Price;
-                AddField(ActivePlayer, Field);
-            }
-            throw new System.NotImplementedException();
+            DialogController.BuyField(Field.Name, Price,ActivePlayer.Balance, ReadOnly, delegate () { BuyFieldYes(Field, Price, ActivePlayer); });
         }
+    }
+
+    private void BuyFieldYes(FieldDefinition Field, int Price, PlayerFigure ActivePlayer)
+    {
+        ActivePlayer.Balance -= Price;
+        AddField(ActivePlayer, Field);
     }
 
     private void AddField(PlayerFigure ActivePlayer, FieldDefinition Field)
@@ -117,10 +118,5 @@ public class CashController : MonoBehaviour
     {
         //Draw Chest Card
         throw new System.NotImplementedException();
-    }
-
-    private bool ReadOnly()
-    {
-        return !gameController.IsOwnerTurn();
     }
 }
