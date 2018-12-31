@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RailwayStation : FieldDefinition
 {
-
+    public int Price;
+    public int[] Rent;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,17 +23,21 @@ public class RailwayStation : FieldDefinition
         return;
     }
 
-    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, DialogController DialogController)
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, CashController CashController)
     {
         if(Owner == null)
         {
-            //Buy?
+            CashController.BuyField(this, Price, ActivePlayer);
         }
         else if (ActivePlayer != Owner)
         {
-            //Rent
+            CashController.PayRent(this, GetRent(), ActivePlayer);
         }
 
-        throw new System.NotImplementedException();
+    }
+
+    private int GetRent()
+    {
+        return Rent[GetOwnedChildrenCount() - 1];
     }
 }

@@ -6,9 +6,12 @@ public class Building : FieldDefinition
 {
     public int Price;
     public int[] Rent;
-    private int RentPointer=0; //0 rent, 1: rent + colour bonus, 2: 1 house, 3: 2 houses,...,6: hotel
+    public int HouseCount;
+    public int HotelCount;
     public int PricePerHouse;
     public int PricePerHotel;
+    public readonly int MaxHouses = 4;
+    public readonly int MaxHotels = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -22,27 +25,27 @@ public class Building : FieldDefinition
 
     public bool IsFullyUpgraded()
     {
-        return RentPointer == 6;
+        return HotelCount == 1;
     }
 
-    public void AddHouse()
+    public void AddHouse(int HouseCounter, int HotelCounter)
     {
-        IncreaseRent();
+        HouseCount += (HotelCount += HotelCounter) >= 1 ? 0 : HouseCounter;
     }
 
-    private void IncreaseRent()
+    public void removeHouse(int HouseCounter, int HotelCounter)
     {
-        RentPointer++;
-    }
-
-    public void FullSet()
-    {
-        IncreaseRent();
+        HouseCount = (HotelCounter > 0 && (HotelCount -= HotelCounter) == 0) ? 4 - HouseCounter : HouseCount - HouseCounter;
     }
 
     public int GetRent()
     {
-        return Rent[RentPointer];
+        return Rent[GetRentPointer()];
+    }
+
+    private int GetRentPointer()
+    {
+        return OwnsEveryBuildingOfCategory() ? (1 + HouseCount + (HotelCount == 0 ? 0 : HotelCount + MaxHouses)) : 0;
     }
 
     public override void Hover(PlayerFigure playerFigure)
@@ -50,69 +53,20 @@ public class Building : FieldDefinition
         return;
     }
 
-    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, DialogController DialogController)
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, CashController CashController)
     {
-        //owned bei nobody and enough money to buy it
-        if (Owner == null && ActivePlayer.Balance >= Price)
+        if (Owner == null)
         {
-            //show Buy-Dialog
-            //if (form.ShowDialog() == DialogResult.Yes)
-            //{
-            //    pf.Balance -= Price;
-            //    AddBuilding(pf);
-            //    if (OwnsEveryBuildingOfCategory(activeBuilding, pf))
-            //    {
-            //        AddColourSetBonus();
-            //    }
-            //}
+            CashController.BuyField(this, Price, ActivePlayer);
         }
-        //pay rent
-        else if (Owner != null && Owner != ActivePlayer)
+        else if (Owner != ActivePlayer)
         {
-            int rent = GetRent();
-            //show Pay-Dialog
-            if (ActivePlayer.Balance >= rent)
-            {
-                ActivePlayer.Balance -= rent;
-                Owner.Balance += rent;
-            }
-            else //sell buildings
-            {
-                //switch Player
-                int Amount = rent - ActivePlayer.Balance;
-                DialogController.SellFields(ActivePlayer, Owner,Amount);
-                //and foreach(Building building in soldBuildings){ pf.removeBuilding(activeBuilding)};
-            }
+            CashController.PayRent(this, GetRent(), ActivePlayer);
         }
-        //want to buy houses/hotel?
-        else if (OwnsEveryBuildingOfCategory(ActivePlayer) && !IsFullyUpgraded())
+        else if (OwnsEveryBuildingOfCategory() && !IsFullyUpgraded())
         {
-            //ShowDialog
-        }
-        throw new System.NotImplementedException();
-    }
-
-    private void AddBuilding(PlayerFigure player)
-    {
-        Owner = player;
-        player.AddBuilding(this);
-    }
-
-    private bool OwnsEveryBuildingOfCategory(PlayerFigure player)
-    {
-        bool valid = true;
-        foreach (FieldDefinition building in GetParent().GetComponentsInChildren<FieldDefinition>())
-        {
-            valid = valid && building.Owner == player;
-        }
-        return valid;
-    }
-
-    private void AddColourSetBonus()
-    {
-        foreach (Building building in GetParent().GetComponentsInChildren<Building>())
-        {
-            building.FullSet();
+            CashController.BuyHouse(this, ActivePlayer);
         }
     }
+    
 }

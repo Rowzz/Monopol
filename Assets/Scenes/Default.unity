@@ -244,6 +244,9 @@ MonoBehaviour:
   Next: {fileID: 907642133}
   Before: {fileID: 1814584814}
   Owner: {fileID: 0}
+  Name: Electric Company
+  Price: 150
+  Rent: 040000000a000000
 --- !u!1001 &17564789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -371,6 +374,7 @@ MonoBehaviour:
   Next: {fileID: 21449079}
   Before: {fileID: 1445518380}
   Owner: {fileID: 0}
+  Name: Community Chest
 --- !u!1001 &21449076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -455,6 +459,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: Before
       value: 
       objectReference: {fileID: 17564792}
@@ -467,6 +476,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 1400
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Pennsylvania Avenue
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -540,7 +604,7 @@ GameObject:
   - component: {fileID: 42574436}
   - component: {fileID: 42574435}
   m_Layer: 0
-  m_Name: Dialog Controller
+  m_Name: Cash Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -808,6 +872,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: ID
       value: 10
       objectReference: {fileID: 0}
@@ -825,6 +894,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 220
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 878
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 1050
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Indiana Avenue
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -1017,6 +1141,7 @@ MonoBehaviour:
   Next: {fileID: 1864001112}
   Before: {fileID: 2042460695}
   Owner: {fileID: 0}
+  Name: Chance
 --- !u!1 &299128998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,6 +1381,11 @@ PrefabInstance:
       propertyPath: IsPayableBuilding
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Vermont Avenue
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -1376,6 +1506,7 @@ MonoBehaviour:
   Next: {fileID: 2800531583947863123}
   Before: {fileID: 1656620225}
   Owner: {fileID: 0}
+  Name: Community Chest
 --- !u!1001 &490900637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1503,6 +1634,7 @@ MonoBehaviour:
   Next: {fileID: 738103023}
   Before: {fileID: 567134563}
   Owner: {fileID: 0}
+  Name: Go to jail
 --- !u!1001 &567134560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1587,6 +1719,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: ID
       value: 10
       objectReference: {fileID: 0}
@@ -1604,6 +1741,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 850
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 1025
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 280
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Marvin Gardens
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -1720,6 +1912,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: Before
       value: 
       objectReference: {fileID: 929356326}
@@ -1732,6 +1929,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Park Place
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 1100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 1300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -1893,6 +2145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: ID
       value: 10
       objectReference: {fileID: 0}
@@ -1910,6 +2167,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 260
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 330
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 975
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 1150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Atlantic Avenue
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -2069,6 +2381,7 @@ MonoBehaviour:
   Next: {fileID: 1516964593}
   Before: {fileID: 581797933}
   Owner: {fileID: 0}
+  Name: Luxury Tax
   Amount: 100
 --- !u!1001 &707606869
 PrefabInstance:
@@ -2217,6 +2530,11 @@ PrefabInstance:
       propertyPath: IsPayableBuilding
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Connecticut Avenue
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -2308,6 +2626,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: ID
       value: 10
       objectReference: {fileID: 0}
@@ -2325,6 +2648,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 260
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 330
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 975
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 1150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Ventnor Avenue
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -2441,6 +2819,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: Before
       value: 
       objectReference: {fileID: 490900640}
@@ -2453,6 +2836,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 390
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 1100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 1275
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Pacific Avenue
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -2918,6 +3356,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: Before
       value: 
       objectReference: {fileID: 2544253}
@@ -2930,6 +3373,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: States Avenue
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 625
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 750
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -3146,6 +3644,7 @@ MonoBehaviour:
   Next: {fileID: 581797933}
   Before: {fileID: 1838926910}
   Owner: {fileID: 0}
+  Name: Chance
 --- !u!114 &959559498 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114558213296574916, guid: 62dcc6356d0fd304b985b11266502d5f,
@@ -3290,6 +3789,7 @@ MonoBehaviour:
   Next: {fileID: 229350462}
   Before: {fileID: 1741755950}
   Owner: {fileID: 0}
+  Name: Chance
 --- !u!1 &973258709
 GameObject:
   m_ObjectHideFlags: 0
@@ -3575,6 +4075,7 @@ MonoBehaviour:
   Next: {fileID: 1741755950}
   Before: {fileID: 1344590736}
   Owner: {fileID: 0}
+  Name: Parking
 --- !u!1 &1140712541
 GameObject:
   m_ObjectHideFlags: 0
@@ -3724,7 +4225,7 @@ MonoBehaviour:
   - {fileID: 1162452528}
   Players:
   - {fileID: 840331906}
-  dialogController: {fileID: 42574435}
+  CashController: {fileID: 42574435}
   ActivePlayer: {fileID: 840331906}
 --- !u!4 &1232722726
 Transform:
@@ -3836,6 +4337,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: Before
       value: 
       objectReference: {fileID: 1720896603}
@@ -3848,6 +4354,56 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: New York Avenue
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 220
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -3976,6 +4532,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: Before
       value: 
       objectReference: {fileID: 738103023}
@@ -3988,6 +4549,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 390
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 1100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 1275
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: North Carolina Avenue
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -4181,6 +4797,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: Before
       value: 
       objectReference: {fileID: 641651018}
@@ -4193,6 +4814,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 1400
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 1700
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Boardwalk
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -4309,6 +4985,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: Before
       value: 
       objectReference: {fileID: 1892609109}
@@ -4321,6 +5002,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: St. James Place
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 950
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -4530,6 +5266,7 @@ MonoBehaviour:
   Next: {fileID: 1656620225}
   Before: {fileID: 1516964593}
   Owner: {fileID: 0}
+  Name: Start
   Amount: 100
 --- !u!1 &1610681738
 GameObject:
@@ -4770,6 +5507,11 @@ PrefabInstance:
       propertyPath: IsPayableBuilding
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Mediterranean Avenue
+      objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
       propertyPath: m_Enabled
@@ -4939,6 +5681,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: Before
       value: 
       objectReference: {fileID: 2018389428}
@@ -4951,6 +5698,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 950
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Tennesse Avenue
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -5110,6 +5912,7 @@ MonoBehaviour:
   Next: {fileID: 1847704029}
   Before: {fileID: 2800531583947863123}
   Owner: {fileID: 0}
+  Name: Income Tax
   Amount: 200
 --- !u!1001 &1731473713
 PrefabInstance:
@@ -5195,6 +5998,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: Before
       value: 
       objectReference: {fileID: 907642133}
@@ -5207,6 +6015,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Virginia Avenue
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -5323,6 +6186,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: ID
       value: 10
       objectReference: {fileID: 0}
@@ -5340,6 +6208,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Illinois Avenue
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 925
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 1100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -5456,6 +6379,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: ID
       value: 10
       objectReference: {fileID: 0}
@@ -5473,6 +6401,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 220
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 878
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 1050
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Kentucky Avenue
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -5699,6 +6682,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
+      propertyPath: Rent.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
       propertyPath: Before
       value: 
       objectReference: {fileID: 1852377724}
@@ -5711,6 +6699,61 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: St. Charles Place
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Price
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[1]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[2]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[3]
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[4]
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[5]
+      value: 625
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Rent.Array.data[6]
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHouse
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: PricePerHotel
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -5887,6 +6930,9 @@ MonoBehaviour:
   Next: {fileID: 929356326}
   Before: {fileID: 21449079}
   Owner: {fileID: 0}
+  Name: Short Line
+  Price: 200
+  Rent: 190000003200000064000000c8000000
 --- !u!1001 &1847704026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6019,6 +7065,9 @@ MonoBehaviour:
   Next: {fileID: 2042460695}
   Before: {fileID: 1729100941}
   Owner: {fileID: 0}
+  Name: Reading Railroad
+  Price: 200
+  Rent: 190000003200000064000000c8000000
 --- !u!1001 &1852377721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6146,6 +7195,7 @@ MonoBehaviour:
   Next: {fileID: 1814584814}
   Before: {fileID: 918234484}
   Owner: {fileID: 0}
+  Name: Jail
 --- !u!1 &1860484517
 GameObject:
   m_ObjectHideFlags: 0
@@ -6334,6 +7384,9 @@ MonoBehaviour:
   Next: {fileID: 1527567721}
   Before: {fileID: 1731473716}
   Owner: {fileID: 0}
+  Name: Pennsylvania Railroad
+  Price: 200
+  Rent: 190000003200000064000000c8000000
 --- !u!1001 &1910992664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6471,6 +7524,9 @@ MonoBehaviour:
   Next: {fileID: 590241351}
   Before: {fileID: 1735349108}
   Owner: {fileID: 0}
+  Name: B. & O. Railroad
+  Price: 200
+  Rent: 190000003200000064000000c8000000
 --- !u!1 &1920252602
 GameObject:
   m_ObjectHideFlags: 0
@@ -6736,6 +7792,7 @@ MonoBehaviour:
   Next: {fileID: 1720896603}
   Before: {fileID: 1527567721}
   Owner: {fileID: 0}
+  Name: Community Chest
 --- !u!1001 &2042460693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6882,6 +7939,11 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Oriental Avenue
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}
@@ -7095,6 +8157,9 @@ MonoBehaviour:
   Next: {fileID: 567134563}
   Before: {fileID: 711951583}
   Owner: {fileID: 0}
+  Name: Water Works
+  Price: 150
+  Rent: 040000000a000000
 --- !u!1 &2119824902
 GameObject:
   m_ObjectHideFlags: 0
@@ -7329,6 +8394,11 @@ PrefabInstance:
         type: 3}
       propertyPath: IsPayableBuilding
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139733375541016210, guid: 58060a8d2e286a1428850f7be261a625,
+        type: 3}
+      propertyPath: Name
+      value: Baltic Avenue
       objectReference: {fileID: 0}
     - target: {fileID: 1595815397973634544, guid: 58060a8d2e286a1428850f7be261a625,
         type: 3}

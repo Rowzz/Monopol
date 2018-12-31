@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Utility : FieldDefinition
 {
+    public int Price;
+    public int[] Rent;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -21,20 +24,27 @@ public class Utility : FieldDefinition
         return;
     }
 
-    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, DialogController DialogController)
+    private int GetRent()
+    {
+        return Rent[GetRentPointer()];
+    }
+
+    private int GetRentPointer()
+    {
+        return OwnsEveryBuildingOfCategory() ? 1 : 0;
+    }
+
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, CashController CashController)
     {
         if (Owner == null)
         {
-            //Buy?
+            CashController.BuyField(this, Price, ActivePlayer);
         }
         else if (ActivePlayer != Owner)
         {
-            //Rent
+            int Amount = GetRent() * Dicevalue;
+            CashController.PayRent(this, Amount, ActivePlayer);
         }
-        else
-        {
-            //Buy House/Hotel?
-        }
-        throw new System.NotImplementedException();
     }
+
 }

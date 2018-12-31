@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Chest : FieldDefinition
 {
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +21,8 @@ public class Chest : FieldDefinition
         return;
     }
 
-    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, DialogController DialogController)
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, CashController CashController)
     {
-        //Draw Chest-Card
-        throw new System.NotImplementedException();
+        CashController.DrawChestCard(Players, ActivePlayer, Dicevalue);
     }
 }

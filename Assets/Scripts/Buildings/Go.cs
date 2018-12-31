@@ -22,7 +22,7 @@ public class Go : FieldDefinition
         playerFigure.Balance += Amount;
     }
 
-    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, DialogController DialogController)
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, CashController CashController)
     {
         ActivePlayer.Balance += Amount;
     }

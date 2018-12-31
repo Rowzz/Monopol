@@ -6,17 +6,19 @@ public class PlayerFigure : MonoBehaviour
 {
     public FieldDefinition currentField;
     public int Balance;
-    private List<FieldDefinition> OwnedBuildings;
+    private List<FieldDefinition> OwnedBuildings; // when you want to list all your/your opponents buildings. redundancy for speed
     public int PlayerMovementSpeed;
     public GameController gameController;
     private Vector3 NextPosition;
     private int PositionsToGo;
     private readonly float MoveFieldTolerance = 0.2f;
     private int DiceResult;
+    //Cards (e.g. escape jail)
 
     // Start is called before the first frame update
     void Start()
     {
+        OwnedBuildings = new List<FieldDefinition>();
     }
 
     // Update is called once per frame

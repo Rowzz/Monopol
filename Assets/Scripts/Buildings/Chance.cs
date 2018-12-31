@@ -21,9 +21,8 @@ public class Chance : FieldDefinition
         return;
     }
 
-    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, DialogController DialogController)
+    public override void Stay(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int Dicevalue, CashController CashController)
     {
-        //Draw Chance-Card
-        throw new System.NotImplementedException();
+        CashController.DrawChanceCard(Players, ActivePlayer, Dicevalue);
     }
 }
