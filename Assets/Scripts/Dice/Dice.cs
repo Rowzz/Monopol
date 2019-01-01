@@ -19,7 +19,7 @@ public class Dice : MonoBehaviourPunCallbacks {
     // Testing Porpuse only 
     private void OnMouseDown()
     {
-        base.photonView.RequestOwnership();
+        gameController.NextPlayer();
     }
 
 

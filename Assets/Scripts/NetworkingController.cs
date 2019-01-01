@@ -55,8 +55,9 @@ public class NetworkingController : MonoBehaviourPunCallbacks
     }
 
     public void InstantiatePlayer()
-    {
+    { 
         PlayerFigure Player = PhotonNetwork.Instantiate("Player", GameObject.Find("Start").transform.position, Quaternion.identity).GetComponent<PlayerFigure>();
+        Player.GetComponent<MeshRenderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         Player.gameController = GameController;
         Player.currentField = GameObject.Find("Start").GetComponent<FieldDefinition>();
         GameController.AddPlayer(Player);

@@ -7,7 +7,7 @@ using Photon.Realtime;
 public class GameController : MonoBehaviourPunCallbacks
 {
     public Dice[] Dices;
-    private List<PlayerFigure> Players;
+    public List<PlayerFigure> Players;
     public CashController CashController;
     public PlayerFigure ActivePlayer;
     public DialogController DialogController;
@@ -43,6 +43,7 @@ public class GameController : MonoBehaviourPunCallbacks
     {
         int index = Players.IndexOf(ActivePlayer)+1;
         index = index >= Players.Count ? 0 : index;
+        Debug.LogFormat($"index of new player set to: {index}");
         SetActivePlayer(index);
     }
 
