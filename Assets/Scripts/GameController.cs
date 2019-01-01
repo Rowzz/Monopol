@@ -53,6 +53,7 @@ public class GameController : MonoBehaviourPunCallbacks
         {
             foreach(Dice dice in Dices)
             {
+                dice.GetComponent<PhotonView>().RequestOwnership();
                 dice.SetDiceLock(false);
             }
         }
