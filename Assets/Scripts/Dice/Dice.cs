@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Realtime;
+using Photon.Pun;
 
-public class Dice : MonoBehaviour {
+public class Dice : MonoBehaviourPunCallbacks {
 
 	Rigidbody rb;
 
@@ -14,7 +16,14 @@ public class Dice : MonoBehaviour {
 	public DiceSide[] diceSides;
     public GameController gameController;
 
-	void Start()
+    // Testing Porpuse only 
+    private void OnMouseDown()
+    {
+        base.photonView.RequestOwnership();
+    }
+
+
+    void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		initPosition = transform.position;
