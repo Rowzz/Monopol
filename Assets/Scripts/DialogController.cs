@@ -11,9 +11,14 @@ public class DialogController : MonoBehaviour
     public BuyUtility BuyUtilityDialog;
     public BuyRailroad BuyRailroadDialog;
 
-    public void BuyBuilding(Building Building, int Balance, bool ReadOnly, UnityAction YesClick)
+    public void BuyBuilding(Building Building, bool ReadOnly, UnityAction YesClick)
     {
-        BuyBuildingDialog.ShowDialog(Building, Balance, ReadOnly, YesClick);
+        BuyBuildingDialog.ShowDialog(Building, ReadOnly, YesClick);
+    }
+
+    public void ShowBuilding(Building Building)
+    {
+        BuyBuildingDialog.ShowDialog(Building);
     }
 
     public void BuyRailwayStation(RailwayStation Railroad, int Balance, bool ReadOnly, UnityAction YesClick)

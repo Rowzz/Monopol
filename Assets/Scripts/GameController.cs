@@ -6,6 +6,7 @@ using Photon.Realtime;
 
 public class GameController : MonoBehaviourPunCallbacks
 {
+    public static readonly string Currency = "€";
     public Dice[] Dices;
     public List<PlayerFigure> Players;
     public CashController CashController;
@@ -64,5 +65,10 @@ public class GameController : MonoBehaviourPunCallbacks
     {
         //Return if Owner 
         return true;
+    }
+
+    public static string GetCurrency(int Price)
+    {
+        return Price + Currency;
     }
 }

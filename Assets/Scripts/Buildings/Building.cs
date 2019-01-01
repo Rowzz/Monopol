@@ -75,4 +75,10 @@ public class Building : FieldDefinition
     }
 
 
+    private void OnMouseDown()
+    {
+        GameObject.Find("Game Controller").GetComponent<GameController>().DialogController.ShowBuilding(this);
+    }
+
+
 }

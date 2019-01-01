@@ -13,6 +13,7 @@ public class PlayerFigure : MonoBehaviour
     private int PositionsToGo;
     private readonly float MoveFieldTolerance = 0.2f;
     private int DiceResult;
+    public int? ProgrammaticVal = null;
     //Cards (e.g. escape jail)
 
     // Start is called before the first frame update
@@ -64,7 +65,7 @@ public class PlayerFigure : MonoBehaviour
         else
         {
             SetNextPosition();
-            PositionsToGo = DiceResult = ToGo + DiceResult;
+            PositionsToGo = DiceResult = ProgrammaticVal ?? ToGo + DiceResult;
         }
     }
 
