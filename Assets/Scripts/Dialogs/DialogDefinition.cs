@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public abstract class DialogDefinition : MonoBehaviour
 {
-
     public void Awake()
     {
         SetGameObjectVisibility(false);
@@ -49,6 +48,10 @@ public abstract class DialogDefinition : MonoBehaviour
 
             AddCloseEvent(YesButton, NoButton);
         }
+    }
+
+    public void SetButtonText(Button button, string Text) {
+        button.transform.GetChild(0).GetComponent<Text>().text = Text;
     }
     
 }

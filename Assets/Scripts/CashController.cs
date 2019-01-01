@@ -67,7 +67,7 @@ public class CashController : MonoBehaviour
     {
         if (EnoughMoney(ActivePlayer,Building.Price))
         {
-            DialogController.BuyBuilding(Building, ActivePlayer.Balance, ReadOnly, BuyFieldYesAction(Building, Building.Price,ActivePlayer));
+            DialogController.BuyBuilding(Building, ReadOnly, BuyFieldYesAction(Building, Building.Price,ActivePlayer));
         }
     }
 
