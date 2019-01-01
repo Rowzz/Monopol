@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class GameController : MonoBehaviour
+public class GameController : MonoBehaviourPunCallbacks
 {
     public Dice[] Dices;
-    public List<PlayerFigure> Players;
+    private List<PlayerFigure> Players;
     public CashController CashController;
     public PlayerFigure ActivePlayer;
     public DialogController DialogController;
@@ -13,6 +15,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Players = new List<PlayerFigure>();
     }
 
     // Update is called once per frame
@@ -28,6 +31,12 @@ public class GameController : MonoBehaviour
     public void SetDiceValue(int value)
     {
         ActivePlayer.MovePlayer(value);
+    }
+
+    public void AddPlayer(PlayerFigure player)
+    {
+        Players.Add(player);
+        SetActivePlayer(0);
     }
 
     public void NextPlayer()
@@ -47,17 +56,11 @@ public class GameController : MonoBehaviour
                 dice.SetDiceLock(false);
             }
         }
-        else
-        {
-            //get Random Force and apply it
-            //dice1.RollDice(x, y, z);
-            //dice2.RollDice(x2, y2, z2);
-        }
     }
 
     public bool IsOwnerTurn()
     {
-        //check if ActivePlayer == Owner
+        //Return if Owner 
         return true;
     }
 }
