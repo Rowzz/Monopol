@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public abstract class DialogDefinition : MonoBehaviour
 {
-    public GameObject Dialog;
 
-    private void Awake()
+    public void Awake()
     {
         SetGameObjectVisibility(false);
     }
@@ -19,7 +19,7 @@ public abstract class DialogDefinition : MonoBehaviour
 
     public void SetGameObjectVisibility(bool status)
     {
-        Dialog.SetActive(status);
+        gameObject.SetActive(status);
     }
 
     public void Reset(params Button[] Buttons)
@@ -37,4 +37,18 @@ public abstract class DialogDefinition : MonoBehaviour
             button.onClick.AddListener(Close);
         }
     }
+
+    public void BuyDialog(Button YesButton, Button NoButton, bool ReadOnly, UnityAction YesClick)
+    {
+        Reset(YesButton, NoButton);
+        SetGameObjectVisibility(true);
+
+        if (!ReadOnly)
+        {
+            YesButton.onClick.AddListener(YesClick);
+
+            AddCloseEvent(YesButton, NoButton);
+        }
+    }
+    
 }

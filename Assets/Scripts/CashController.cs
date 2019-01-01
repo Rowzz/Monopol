@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CashController : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class CashController : MonoBehaviour
 
     public void PayRent(FieldDefinition Field, int Rent, PlayerFigure ActivePlayer)
     {
-        if(ActivePlayer.Balance >= Rent) //show Dialog?
+        if(EnoughMoney(ActivePlayer, Rent)) //show Dialog?
         {
             PayAmount(ActivePlayer, Rent, Field.Owner);
         }
@@ -62,12 +63,38 @@ public class CashController : MonoBehaviour
         }
     }
 
-    public void BuyField(FieldDefinition Field, int Price, PlayerFigure ActivePlayer)
+    public void BuyBuilding(Building Building, PlayerFigure ActivePlayer)
     {
-        if (ActivePlayer.Balance >= Price)
+        if (EnoughMoney(ActivePlayer,Building.Price))
         {
-            DialogController.BuyField(Field.Name, Price,ActivePlayer.Balance, ReadOnly, delegate () { BuyFieldYes(Field, Price, ActivePlayer); });
+            DialogController.BuyBuilding(Building, ActivePlayer.Balance, ReadOnly, BuyFieldYesAction(Building, Building.Price,ActivePlayer));
         }
+    }
+
+    public void BuyUtility(Utility Utility, PlayerFigure ActivePlayer)
+    {
+        if (EnoughMoney(ActivePlayer, Utility.Price))
+        {
+            DialogController.BuyUtility(Utility, ActivePlayer.Balance, ReadOnly, BuyFieldYesAction(Utility, Utility.Price, ActivePlayer));
+        }
+    }
+
+    public void BuyRailwayStation(RailwayStation RailwayStation, PlayerFigure ActivePlayer)
+    {
+        if (EnoughMoney(ActivePlayer, RailwayStation.Price))
+        {
+            DialogController.BuyRailwayStation(RailwayStation, ActivePlayer.Balance, ReadOnly, BuyFieldYesAction(RailwayStation, RailwayStation.Price, ActivePlayer));
+        }
+    }
+
+    private UnityAction BuyFieldYesAction(FieldDefinition Field, int Price, PlayerFigure ActivePlayer)
+    {
+        return delegate () { BuyFieldYes(Field, Price, ActivePlayer); };
+    }
+
+    private bool EnoughMoney(PlayerFigure ActivePlayer, int Price)
+    {
+        return ActivePlayer.Balance >= Price;
     }
 
     private void BuyFieldYes(FieldDefinition Field, int Price, PlayerFigure ActivePlayer)

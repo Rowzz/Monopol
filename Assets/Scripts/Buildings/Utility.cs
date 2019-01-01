@@ -38,7 +38,7 @@ public class Utility : FieldDefinition
     {
         if (Owner == null)
         {
-            CashController.BuyField(this, Price, ActivePlayer);
+            CashController.BuyUtility(this, ActivePlayer);
         }
         else if (ActivePlayer != Owner)
         {

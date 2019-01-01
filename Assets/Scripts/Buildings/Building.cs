@@ -57,7 +57,7 @@ public class Building : FieldDefinition
     {
         if (Owner == null)
         {
-            CashController.BuyField(this, Price, ActivePlayer);
+            CashController.BuyBuilding(this, ActivePlayer);
         }
         else if (Owner != ActivePlayer)
         {
@@ -68,5 +68,11 @@ public class Building : FieldDefinition
             CashController.BuyHouse(this, ActivePlayer);
         }
     }
-    
+
+    public Color ColorOfParent()
+    {
+        return GetParent().GetComponent<Category>().Color;
+    }
+
+
 }

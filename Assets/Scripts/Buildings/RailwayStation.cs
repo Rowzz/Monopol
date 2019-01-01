@@ -27,7 +27,7 @@ public class RailwayStation : FieldDefinition
     {
         if(Owner == null)
         {
-            CashController.BuyField(this, Price, ActivePlayer);
+            CashController.BuyRailwayStation(this, ActivePlayer);
         }
         else if (ActivePlayer != Owner)
         {

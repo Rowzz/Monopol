@@ -6,19 +6,48 @@ using UnityEngine.UI;
 
 public class BuyBuilding : DialogDefinition
 {
-    public Button YesButton;
-    public Button NoButton;
+    private Button YesButton;
+    private Button NoButton;
+    private Text Name;
+    private Image ColorPanel;
 
-    public void ShowDialog(string Name, int Price, int Balance, bool ReadOnly, UnityAction YesClick)
+    public new void Awake()
     {
-        Reset(YesButton,NoButton);
-        SetGameObjectVisibility(true);
+        base.Awake();
+        string ColorPanelText = "Color Panel";
+        Name = FindChild(ColorPanelText, "Name").GetComponent<Text>();
+        YesButton = FindChild("Button Panel","Yes Button").GetComponent<Button>();
+        NoButton = FindChild("Button Panel", "No Button").GetComponent<Button>();
+        ColorPanel = FindChild(ColorPanelText).GetComponent<Image>();
+    }
 
-        if (!ReadOnly)
+
+    public void ShowDialog(Building Building, int Balancre, bool ReadOnly, UnityAction YesClick)
+    {
+        ColorPanel.color = Building.ColorOfParent();
+        Name.text = Building.Name;
+
+        BuyDialog(YesButton, NoButton, ReadOnly, YesClick);
+    }
+
+    private void SetColor(Color color)
+    {
+        ;
+    }
+
+    private void SetName(string name)
+    {
+        Name.text = name;
+    }
+
+    private GameObject FindChild(params string[] Names)
+    {
+        Transform result = gameObject.transform;
+
+        foreach(string Name in Names)
         {
-            YesButton.onClick.AddListener(YesClick);
-
-            AddCloseEvent(YesButton, NoButton);
+            result = result.Find(Name);
         }
+        return result.gameObject;
     }
 }

@@ -7,13 +7,23 @@ using UnityEngine.UI;
 
 public class DialogController : MonoBehaviour
 {
-    public BuyBuilding BuyBuilding;
+    public BuyBuilding BuyBuildingDialog;
+    public BuyUtility BuyUtilityDialog;
+    public BuyRailroad BuyRailroadDialog;
 
-    public void BuyField(string Name, int Price, int Balance, bool ReadOnly, UnityAction YesClick)
+    public void BuyBuilding(Building Building, int Balance, bool ReadOnly, UnityAction YesClick)
     {
-        BuyBuilding.ShowDialog(Name, Price, Balance, ReadOnly, YesClick);
-        //idk if I should differentiate between Building/Utility/Railroad
-        //All of them have different information (Set bonus, houses, utility description...)
+        BuyBuildingDialog.ShowDialog(Building, Balance, ReadOnly, YesClick);
+    }
+
+    public void BuyRailwayStation(RailwayStation Railroad, int Balance, bool ReadOnly, UnityAction YesClick)
+    {
+        BuyRailroadDialog.ShowDialog(Railroad, Balance, ReadOnly, YesClick);
+    }
+
+    public void BuyUtility(Utility Utility, int Balance, bool ReadOnly, UnityAction YesClick)
+    {
+        BuyUtilityDialog.ShowDialog(Utility, Balance, ReadOnly, YesClick);
     }
 
 }
