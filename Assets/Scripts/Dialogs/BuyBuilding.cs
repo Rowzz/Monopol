@@ -30,16 +30,6 @@ public class BuyBuilding : DialogDefinition
         BuyDialog(YesButton, NoButton, ReadOnly, YesClick);
     }
 
-    private void SetColor(Color color)
-    {
-        ;
-    }
-
-    private void SetName(string name)
-    {
-        Name.text = name;
-    }
-
     private GameObject FindChild(params string[] Names)
     {
         Transform result = gameObject.transform;
