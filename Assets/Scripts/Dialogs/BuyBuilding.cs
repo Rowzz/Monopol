@@ -58,19 +58,20 @@ public class BuyBuilding : DialogDefinition
     internal override void SetYesButtonColor()
     {
         YesButton.GetComponent<Image>().color = Color.green;
-        gameObject.GetComponent<CanvasGroup>().alpha = 0;
+        EnableFadeOut();
     }
 
     internal override void SetNoButtonColor()
     {
         NoButton.GetComponent<Image>().color = Color.red;
+        EnableFadeOut();
     }
 
     public void ShowDialog(Building Building)
     {
         if (!gameObject.activeSelf || !NoButton.gameObject.activeSelf)
         {
-            Header.text = BuyBuildingInformation;
+            Header.text = BuildingInformation;
             SetBuildingInformation(Building);
             NoButton.gameObject.SetActive(false);
             SetGameObjectVisibility(true);

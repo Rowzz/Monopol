@@ -40,11 +40,13 @@ public class BuyRailroad : DialogDefinition
     internal override void SetYesButtonColor()
     {
         YesButton.GetComponent<Image>().color = Color.green;
+        EnableFadeOut();
     }
 
     internal override void SetNoButtonColor()
     {
         NoButton.GetComponent<Image>().color = Color.red;
+        EnableFadeOut();
     }
 
     public void ShowDialog(RailwayStation Building, bool ReadOnly, Action<string> YesClick, Action<string> NoClick)

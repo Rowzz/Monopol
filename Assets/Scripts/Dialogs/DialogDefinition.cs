@@ -7,6 +7,42 @@ using UnityEngine.UI;
 
 public abstract class DialogDefinition : MonoBehaviour
 {
+    internal bool FadeOut = false;
+    private readonly float Step = 0.4f;
+
+
+    private void FixedUpdate()
+    {
+        if (FadeOut)
+        {
+            var comp = gameObject.GetComponent<CanvasGroup>();
+            float step = Time.fixedDeltaTime * Step;
+            if (comp.alpha <= step)
+            {
+                step = comp.alpha;
+                SetGameObjectVisibility(false);
+                DisableFadeOut();
+            }
+            gameObject.GetComponent<CanvasGroup>().alpha -= step;
+        }
+    }
+
+    internal void EnableFadeOut()
+    {
+        SetFadeOutStatus(true);
+    }
+
+    internal void DisableFadeOut()
+    {
+        SetFadeOutStatus(false);
+    }
+
+    private void SetFadeOutStatus(bool Status)
+    {
+        FadeOut = Status;
+    }
+
+
     public abstract void Init();
 
     public void Close()
@@ -26,6 +62,7 @@ public abstract class DialogDefinition : MonoBehaviour
             button.onClick.RemoveAllListeners();
             button.GetComponent<Image>().color = Color.white;
         }
+        gameObject.GetComponent<CanvasGroup>().alpha = 1;
     }
 
     public void AddCloseEvent(params Button[] Buttons)
@@ -48,7 +85,7 @@ public abstract class DialogDefinition : MonoBehaviour
         {
             YesButton.onClick.AddListener(delegate() { YesClick(name); });
             NoButton.onClick.AddListener(delegate () { NoClick(name); });
-            AddCloseEvent(YesButton, NoButton);
+            //AddCloseEvent(YesButton, NoButton);
         }
     }
 

@@ -125,7 +125,7 @@ public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     private void BuyFieldNo(string Name)
     {
-         NetworkingController.SendData(Name, 11, false);
+         NetworkingController.SendData(Name, 11, true);
     }
 
     private bool EnoughMoney(PlayerFigure ActivePlayer, int Price)

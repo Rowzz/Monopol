@@ -9706,6 +9706,7 @@ GameObject:
   - component: {fileID: 1568395978}
   - component: {fileID: 1568395977}
   - component: {fileID: 1568395981}
+  - component: {fileID: 1568395982}
   m_Layer: 5
   m_Name: BuyBuilding
   m_TagString: Untagged
@@ -9810,6 +9811,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ad97b4808b9154db32172c543530e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &1568395982
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568395976}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1569467781
 GameObject:
   m_ObjectHideFlags: 0
@@ -12312,6 +12325,7 @@ GameObject:
   - component: {fileID: 1784224931}
   - component: {fileID: 1784224930}
   - component: {fileID: 1784224929}
+  - component: {fileID: 1784224932}
   m_Layer: 0
   m_Name: ActionBar
   m_TagString: Untagged
@@ -12399,6 +12413,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!225 &1784224932
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784224927}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &1784900646 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114077486499735650, guid: 62dcc6356d0fd304b985b11266502d5f,
@@ -13413,6 +13439,7 @@ GameObject:
   - component: {fileID: 1876354655}
   - component: {fileID: 1876354654}
   - component: {fileID: 1876354653}
+  - component: {fileID: 1876354657}
   m_Layer: 5
   m_Name: BuyUtility
   m_TagString: Untagged
@@ -13516,6 +13543,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!225 &1876354657
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876354651}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1888976159
 GameObject:
   m_ObjectHideFlags: 0
@@ -15096,6 +15135,7 @@ GameObject:
   - component: {fileID: 2057253258}
   - component: {fileID: 2057253257}
   - component: {fileID: 2057253256}
+  - component: {fileID: 2057253260}
   m_Layer: 5
   m_Name: BuyRailwayStation
   m_TagString: Untagged
@@ -15199,6 +15239,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!225 &2057253260
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057253254}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2088485069
 GameObject:
   m_ObjectHideFlags: 0

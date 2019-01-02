@@ -45,11 +45,13 @@ public class BuyUtility : DialogDefinition
     internal override void SetYesButtonColor()
     {
         YesButton.GetComponent<Image>().color = Color.green;
+        EnableFadeOut();
     }
 
     internal override void SetNoButtonColor()
     {
         NoButton.GetComponent<Image>().color = Color.red;
+        EnableFadeOut();
     }
 
     public void ShowDialog(Utility Building, bool ReadOnly, Action<string> YesClick, Action<string> NoClick)
