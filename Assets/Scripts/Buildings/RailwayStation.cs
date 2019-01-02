@@ -40,4 +40,9 @@ public class RailwayStation : FieldDefinition
     {
         return Rent[GetOwnedChildrenCount() - 1];
     }
+
+    private void OnMouseDown()
+    {
+        GameObject.Find("Game Controller").GetComponent<GameController>().DialogController.ShowRailwayStation(this);
+    }
 }

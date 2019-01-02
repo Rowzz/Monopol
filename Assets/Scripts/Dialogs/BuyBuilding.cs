@@ -19,9 +19,8 @@ public class BuyBuilding : DialogDefinition
     private readonly string BuyBuildingInformation = "Möchtest du das Haus kaufen?";
     private readonly string BuildingInformation = "Gebäudeinformation";
 
-    public new void Awake()
+    public override void Init()
     {
-        base.Awake();
         string ButtonPanel = "Button Panel";
         string ColorPanelText = "Color Panel";
         string PricePanel = "Price Panel";
@@ -84,16 +83,5 @@ public class BuyBuilding : DialogDefinition
         {
             RentText[i].text = GameController.GetCurrency(Rent[i]);
         }
-    }
-
-    private GameObject FindChild(params string[] Names)
-    {
-        Transform result = gameObject.transform;
-
-        foreach(string Name in Names)
-        {
-            result = result.Find(Name);
-        }
-        return result.gameObject;
     }
 }

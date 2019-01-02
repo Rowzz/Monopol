@@ -49,6 +49,8 @@ public class GameController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         switch(photonEvent.Code)
         {
+            //0 - 9 reserved for GameController
+            //10 - x reserved for Cashcontroller
             //Trigger Stay On Field
             case 0:
                 {

@@ -95,7 +95,6 @@ public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         if (EnoughMoney(ActivePlayer,Building.Price))
         {
-            Debug.Log(ReadOnly);
             DialogController.BuyBuilding(Building, ReadOnly, BuyFieldYesAction(Building, Building.Price,ActivePlayer), BuyFieldNo);
         }
     }
@@ -104,7 +103,7 @@ public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         if (EnoughMoney(ActivePlayer, Utility.Price))
         {
-            DialogController.BuyUtility(Utility, ActivePlayer.Balance, ReadOnly, BuyFieldYesAction(Utility, Utility.Price, ActivePlayer), BuyFieldNo);
+            DialogController.BuyUtility(Utility, ReadOnly, BuyFieldYesAction(Utility, Utility.Price, ActivePlayer), BuyFieldNo);
         }
     }
 
@@ -112,7 +111,7 @@ public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         if (EnoughMoney(ActivePlayer, RailwayStation.Price))
         {
-            DialogController.BuyRailwayStation(RailwayStation, ActivePlayer.Balance, ReadOnly, BuyFieldYesAction(RailwayStation, RailwayStation.Price, ActivePlayer), BuyFieldNo);
+            DialogController.BuyRailwayStation(RailwayStation, ReadOnly, BuyFieldYesAction(RailwayStation, RailwayStation.Price, ActivePlayer), BuyFieldNo);
         }
     }
 

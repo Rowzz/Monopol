@@ -6,10 +6,7 @@ using UnityEngine.UI;
 
 public abstract class DialogDefinition : MonoBehaviour
 {
-    public void Awake()
-    {
-        SetGameObjectVisibility(false);
-    }
+    public abstract void Init();
 
     public void Close()
     {
@@ -53,5 +50,16 @@ public abstract class DialogDefinition : MonoBehaviour
     public void SetButtonText(Button button, string Text) {
         button.transform.GetChild(0).GetComponent<Text>().text = Text;
     }
-    
+
+    internal GameObject FindChild(params string[] Names)
+    {
+        Transform result = gameObject.transform;
+
+        foreach (string Name in Names)
+        {
+            result = result.Find(Name);
+        }
+        return result.gameObject;
+    }
+
 }

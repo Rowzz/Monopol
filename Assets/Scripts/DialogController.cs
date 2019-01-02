@@ -4,16 +4,17 @@ using UnityEngine.UI;
 
 public class DialogController : MonoBehaviour
 {
-    public BuyBuilding BuyBuildingDialog;
-    public BuyUtility BuyUtilityDialog;
-    public BuyRailroad BuyRailroadDialog;
-    public Button PlayerBuildings;
+    private BuyBuilding BuyBuildingDialog;
+    private BuyUtility BuyUtilityDialog;
+    private BuyRailroad BuyRailroadDialog;
+    private Button PlayerBuildings;
     private Button EndTurn;
     private Text Balance;
     private GameController GameController;
 
     public void Awake()
     {
+        PlayerBuildings = GetDialogThroughName("ActionBar").transform.Find("Panel").Find("Buildings").GetComponent<Button>();
         PlayerBuildings.onClick.RemoveAllListeners();
         PlayerBuildings.onClick.AddListener(ShowBuildingsOfPlayer);
         Balance = GameObject.Find("ActionBar").transform.Find("Panel").Find("Balance").GetComponent<Text>();
@@ -21,6 +22,18 @@ public class DialogController : MonoBehaviour
         EndTurn = GameObject.Find("ActionBar").transform.Find("Panel").Find("EndTurn").GetComponent<Button>();
         EndTurn.onClick.RemoveAllListeners();
         EndTurn.onClick.AddListener(GameController.EndTurn);
+        BuyBuildingDialog = GetDialogThroughName("BuyBuilding").GetComponent<BuyBuilding>();
+        BuyRailroadDialog = GetDialogThroughName("BuyRailwayStation").GetComponent<BuyRailroad>();
+        BuyUtilityDialog = GetDialogThroughName("BuyUtility").GetComponent<BuyUtility>();
+        InitDialogs(BuyBuildingDialog, BuyUtilityDialog, BuyRailroadDialog);
+    }
+
+    private void InitDialogs(params DialogDefinition[] Dialogs)
+    {
+        foreach(DialogDefinition Dialog in Dialogs)
+        {
+            Dialog.Init();
+        }
     }
 
     public void SetPlayerBalance(int balance)
@@ -44,19 +57,29 @@ public class DialogController : MonoBehaviour
         BuyBuildingDialog.ShowDialog(Building);
     }
 
-    public void BuyRailwayStation(RailwayStation Railroad, int Balance, bool ReadOnly, UnityAction YesClick, UnityAction NoClick)
+    public void ShowUtility(Utility Building)
     {
-        BuyRailroadDialog.ShowDialog(Railroad, Balance, ReadOnly, YesClick, NoClick);
+        BuyUtilityDialog.ShowDialog(Building);
     }
 
-    public void BuyUtility(Utility Utility, int Balance, bool ReadOnly, UnityAction YesClick, UnityAction Noclick)
+    public void ShowRailwayStation(RailwayStation Building)
     {
-        BuyUtilityDialog.ShowDialog(Utility, Balance, ReadOnly, YesClick, Noclick);
+        BuyRailroadDialog.ShowDialog(Building);
     }
 
-    public static DialogDefinition GetDialogThroughName(string name)
+    public void BuyRailwayStation(RailwayStation Railroad, bool ReadOnly, UnityAction YesClick, UnityAction NoClick)
     {
-        return GameObject.Find("Dialogs").transform.Find(name).GetComponent<DialogDefinition>();
+        BuyRailroadDialog.ShowDialog(Railroad, ReadOnly, YesClick, NoClick);
+    }
+
+    public void BuyUtility(Utility Utility, bool ReadOnly, UnityAction YesClick, UnityAction Noclick)
+    {
+        BuyUtilityDialog.ShowDialog(Utility, ReadOnly, YesClick, Noclick);
+    }
+
+    public static Transform GetDialogThroughName(string name)
+    {
+        return GameObject.Find("Dialogs").transform.Find(name);
     }
 
     public static void HideDialogs()

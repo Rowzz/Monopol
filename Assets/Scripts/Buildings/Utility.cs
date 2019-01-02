@@ -47,4 +47,9 @@ public class Utility : FieldDefinition
         }
     }
 
+    private void OnMouseDown()
+    {
+        GameObject.Find("Game Controller").GetComponent<GameController>().DialogController.ShowUtility(this);
+    }
+
 }
