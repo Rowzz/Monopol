@@ -16,13 +16,6 @@ public class Dice : MonoBehaviourPunCallbacks {
 	public DiceSide[] diceSides;
     public GameController gameController;
 
-    // Testing Porpuse only 
-    private void OnMouseDown()
-    {
-        gameController.NextPlayer();
-    }
-
-
     void Start()
 	{
 		rb = GetComponent<Rigidbody>();
@@ -73,6 +66,11 @@ public class Dice : MonoBehaviourPunCallbacks {
     public void SetDiceLock(bool status)
     {
         thrown = status;
+    }
+
+    public bool GetDiceLock()
+    {
+        return thrown;
     }
 
 	void SideValueCheck()

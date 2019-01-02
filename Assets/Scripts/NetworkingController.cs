@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon;
 using Photon.Realtime;
 using Photon.Pun;
+using ExitGames.Client.Photon;
 
 public class NetworkingController : MonoBehaviourPunCallbacks
 {
@@ -58,8 +59,17 @@ public class NetworkingController : MonoBehaviourPunCallbacks
     { 
         PlayerFigure Player = PhotonNetwork.Instantiate("Player", GameObject.Find("Start").transform.position, Quaternion.identity).GetComponent<PlayerFigure>();
         Player.GetComponent<MeshRenderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-        Player.gameController = GameController;
-        Player.currentField = GameObject.Find("Start").GetComponent<FieldDefinition>();
-        GameController.AddPlayer(Player);
+        int ID = Player.GetComponent<PhotonView>().OwnerActorNr;
+
+        GameController.AddPlayer(Player, ID);
+        SendData(Player.ID, 1, false);
+        SendData(null, 3, false);
+    }
+
+    public static void SendData(object Data, byte Code, bool toAll)
+    {
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = toAll ? ReceiverGroup.All : ReceiverGroup.Others }; // You would have to set the Receivers to All in order to receive this event on the local client as well
+        SendOptions sendOptions = new SendOptions { Reliability = true };
+        PhotonNetwork.RaiseEvent(Code, Data, raiseEventOptions, sendOptions);
     }
 }

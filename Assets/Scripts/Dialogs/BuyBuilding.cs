@@ -43,7 +43,7 @@ public class BuyBuilding : DialogDefinition
     }
 
 
-    public void ShowDialog(Building Building, bool ReadOnly, UnityAction YesClick)
+    public void ShowDialog(Building Building, bool ReadOnly, UnityAction YesClick, UnityAction NoClick)
     {
         if (!gameObject.activeSelf || !NoButton.gameObject.activeSelf)
         {
@@ -51,7 +51,7 @@ public class BuyBuilding : DialogDefinition
             SetBuildingInformation(Building);
             NoButton.gameObject.SetActive(true);
             SetButtonText(YesButton, "Ja");
-            BuyDialog(YesButton, NoButton, ReadOnly, YesClick);
+            BuyDialog(YesButton, NoButton, ReadOnly, YesClick, NoClick);
         }
     }
 

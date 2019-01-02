@@ -37,7 +37,7 @@ public abstract class DialogDefinition : MonoBehaviour
         }
     }
 
-    public void BuyDialog(Button YesButton, Button NoButton, bool ReadOnly, UnityAction YesClick)
+    public void BuyDialog(Button YesButton, Button NoButton, bool ReadOnly, UnityAction YesClick, UnityAction NoClick)
     {
         Reset(YesButton, NoButton);
         SetGameObjectVisibility(true);
@@ -45,7 +45,7 @@ public abstract class DialogDefinition : MonoBehaviour
         if (!ReadOnly)
         {
             YesButton.onClick.AddListener(YesClick);
-
+            NoButton.onClick.AddListener(NoClick);
             AddCloseEvent(YesButton, NoButton);
         }
     }

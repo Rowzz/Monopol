@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using ExitGames.Client.Photon;
+using Photon.Pun;
+using Photon.Realtime;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CashController : MonoBehaviour
+public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     public GameController gameController;
     private DialogController DialogController { get {return gameController.DialogController; } }
@@ -21,6 +24,31 @@ public class CashController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnEvent(EventData photonEvent)
+    {
+        switch (photonEvent.Code)
+        {
+            //BuyBuilding: Yes
+            case 10:
+                {
+                    object[] data = (object[])photonEvent.CustomData;
+                    PlayerFigure ActivePlayer = gameController.GetPlayerThroughID((int)data[0]);
+                    FieldDefinition Field = gameController.GetFieldThroughName(data[1].ToString(), data[2].ToString());
+                    int Price = (int)data[3];
+                    BuyFieldSync(Field, Price, ActivePlayer);
+                    DialogController.HideDialogs();
+                }
+                break;
+
+            //BuyBuilding: No
+            case 11:
+                {
+                    DialogController.HideDialogs();
+                }
+                break;
+        }
     }
 
     public void BuyHouse(Building building, PlayerFigure ActivePlayer)
@@ -67,7 +95,8 @@ public class CashController : MonoBehaviour
     {
         if (EnoughMoney(ActivePlayer,Building.Price))
         {
-            DialogController.BuyBuilding(Building, ReadOnly, BuyFieldYesAction(Building, Building.Price,ActivePlayer));
+            Debug.Log(ReadOnly);
+            DialogController.BuyBuilding(Building, ReadOnly, BuyFieldYesAction(Building, Building.Price,ActivePlayer), BuyFieldNo);
         }
     }
 
@@ -75,7 +104,7 @@ public class CashController : MonoBehaviour
     {
         if (EnoughMoney(ActivePlayer, Utility.Price))
         {
-            DialogController.BuyUtility(Utility, ActivePlayer.Balance, ReadOnly, BuyFieldYesAction(Utility, Utility.Price, ActivePlayer));
+            DialogController.BuyUtility(Utility, ActivePlayer.Balance, ReadOnly, BuyFieldYesAction(Utility, Utility.Price, ActivePlayer), BuyFieldNo);
         }
     }
 
@@ -83,7 +112,7 @@ public class CashController : MonoBehaviour
     {
         if (EnoughMoney(ActivePlayer, RailwayStation.Price))
         {
-            DialogController.BuyRailwayStation(RailwayStation, ActivePlayer.Balance, ReadOnly, BuyFieldYesAction(RailwayStation, RailwayStation.Price, ActivePlayer));
+            DialogController.BuyRailwayStation(RailwayStation, ActivePlayer.Balance, ReadOnly, BuyFieldYesAction(RailwayStation, RailwayStation.Price, ActivePlayer), BuyFieldNo);
         }
     }
 
@@ -98,6 +127,16 @@ public class CashController : MonoBehaviour
     }
 
     private void BuyFieldYes(FieldDefinition Field, int Price, PlayerFigure ActivePlayer)
+    {
+        NetworkingController.SendData(new object[] { ActivePlayer.ID, Field.GetParent().name, Field.name, Price}, 10, true);
+    }
+
+    private void BuyFieldNo()
+    {
+        NetworkingController.SendData(null, 11, false);
+    }
+
+    private void BuyFieldSync(FieldDefinition Field, int Price, PlayerFigure ActivePlayer)
     {
         ActivePlayer.Balance -= Price;
         AddField(ActivePlayer, Field);

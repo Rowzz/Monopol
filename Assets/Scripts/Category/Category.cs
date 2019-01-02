@@ -5,4 +5,5 @@ using UnityEngine;
 public class Category : MonoBehaviour
 {
     public Color Color;
+    public int Order;
 }

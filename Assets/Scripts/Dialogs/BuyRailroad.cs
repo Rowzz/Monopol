@@ -9,9 +9,9 @@ public class BuyRailroad : DialogDefinition
     public Button YesButton;
     public Button NoButton;
 
-    public void ShowDialog(RailwayStation RailwayStation, int Balance, bool ReadOnly, UnityAction YesClick)
+    public void ShowDialog(RailwayStation RailwayStation, int Balance, bool ReadOnly, UnityAction YesClick, UnityAction NoClick)
     {
-        BuyDialog(YesButton, NoButton, ReadOnly, YesClick);
+        BuyDialog(YesButton, NoButton, ReadOnly, YesClick, NoClick);
 
     }
 }

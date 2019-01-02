@@ -1,19 +1,31 @@
-﻿using System.Collections;
+﻿using ExitGames.Client.Photon;
+using Photon.Pun;
+using Photon.Realtime;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerFigure : MonoBehaviour
 {
     public FieldDefinition currentField;
-    public int Balance;
-    private List<FieldDefinition> OwnedBuildings; // when you want to list all your/your opponents buildings. redundancy for speed
+    private int balance;
+    public int Balance {get { return balance; } set {
+            if (BelongsToOwner)
+            {
+                gameController.DialogController.SetPlayerBalance(value);
+            }
+            balance = value;
+        } }
+    private List<FieldDefinition> OwnedBuildings = new List<FieldDefinition>(); // when you want to list all your/your opponents buildings. redundancy for speed
     public int PlayerMovementSpeed;
     public GameController gameController;
     private Vector3 NextPosition;
     private int PositionsToGo;
     private readonly float MoveFieldTolerance = 0.2f;
     private int DiceResult;
+    public bool BelongsToOwner;
     public int? ProgrammaticVal = null;
+    public int ID;
     //Cards (e.g. escape jail)
 
     // Start is called before the first frame update
@@ -35,7 +47,8 @@ public class PlayerFigure : MonoBehaviour
 
                 if (PositionsToGo == 0)
                 {
-                    gameController.StayOnField(currentField, DiceResult);
+                    //gameController.StayOnField(currentField, DiceResult);
+                    NetworkingController.SendData(new object[] { currentField.GetParent().name, currentField.name, DiceResult }, 0, true);
                     DiceResult = 0;
                 }
             }
