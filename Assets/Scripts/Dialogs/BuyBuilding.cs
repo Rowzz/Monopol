@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -42,7 +43,7 @@ public class BuyBuilding : DialogDefinition
     }
 
 
-    public void ShowDialog(Building Building, bool ReadOnly, UnityAction YesClick, UnityAction NoClick)
+    public void ShowDialog(Building Building, bool ReadOnly, Action<string> YesClick, Action<string> NoClick)
     {
         if (!gameObject.activeSelf || !NoButton.gameObject.activeSelf)
         {
@@ -52,6 +53,17 @@ public class BuyBuilding : DialogDefinition
             SetButtonText(YesButton, "Ja");
             BuyDialog(YesButton, NoButton, ReadOnly, YesClick, NoClick);
         }
+    }
+
+    internal override void SetYesButtonColor()
+    {
+        YesButton.GetComponent<Image>().color = Color.green;
+        gameObject.GetComponent<CanvasGroup>().alpha = 0;
+    }
+
+    internal override void SetNoButtonColor()
+    {
+        NoButton.GetComponent<Image>().color = Color.red;
     }
 
     public void ShowDialog(Building Building)

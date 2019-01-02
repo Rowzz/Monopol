@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -41,8 +42,17 @@ public class BuyUtility : DialogDefinition
         dictCount.Add(1, "zwei");
     }
 
+    internal override void SetYesButtonColor()
+    {
+        YesButton.GetComponent<Image>().color = Color.green;
+    }
 
-    public void ShowDialog(Utility Building, bool ReadOnly, UnityAction YesClick, UnityAction NoClick)
+    internal override void SetNoButtonColor()
+    {
+        NoButton.GetComponent<Image>().color = Color.red;
+    }
+
+    public void ShowDialog(Utility Building, bool ReadOnly, Action<string> YesClick, Action<string> NoClick)
     {
         if (!gameObject.activeSelf || !NoButton.gameObject.activeSelf)
         {

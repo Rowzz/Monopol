@@ -1,6 +1,7 @@
 ﻿using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -38,14 +39,16 @@ public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
                     FieldDefinition Field = gameController.GetFieldThroughName(data[1].ToString(), data[2].ToString());
                     int Price = (int)data[3];
                     BuyFieldSync(Field, Price, ActivePlayer);
-                    DialogController.HideDialogs();
+                    DialogDefinition Dialog = DialogController.GetDialogThroughName(data[4].ToString());
+                    Dialog.SetYesButtonColor();
                 }
                 break;
 
             //BuyBuilding: No
             case 11:
                 {
-                    DialogController.HideDialogs();
+                    DialogDefinition Dialog = DialogController.GetDialogThroughName(photonEvent.CustomData.ToString());
+                    Dialog.SetNoButtonColor();
                 }
                 break;
         }
@@ -115,9 +118,14 @@ public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
         }
     }
 
-    private UnityAction BuyFieldYesAction(FieldDefinition Field, int Price, PlayerFigure ActivePlayer)
+    private Action<string> BuyFieldYesAction(FieldDefinition Field, int Price, PlayerFigure ActivePlayer)
     {
-        return delegate () { BuyFieldYes(Field, Price, ActivePlayer); };
+        return delegate(string Name) { BuyFieldYes(Field, Price, ActivePlayer, Name); };
+    }
+
+    private void BuyFieldNo(string Name)
+    {
+         NetworkingController.SendData(Name, 11, false);
     }
 
     private bool EnoughMoney(PlayerFigure ActivePlayer, int Price)
@@ -125,14 +133,9 @@ public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
         return ActivePlayer.Balance >= Price;
     }
 
-    private void BuyFieldYes(FieldDefinition Field, int Price, PlayerFigure ActivePlayer)
+    private void BuyFieldYes(FieldDefinition Field, int Price, PlayerFigure ActivePlayer, string Name)
     {
-        NetworkingController.SendData(new object[] { ActivePlayer.ID, Field.GetParent().name, Field.name, Price}, 10, true);
-    }
-
-    private void BuyFieldNo()
-    {
-        NetworkingController.SendData(null, 11, false);
+        NetworkingController.SendData(new object[] { ActivePlayer.ID, Field.GetParent().name, Field.name, Price, Name}, 10, true);
     }
 
     private void BuyFieldSync(FieldDefinition Field, int Price, PlayerFigure ActivePlayer)

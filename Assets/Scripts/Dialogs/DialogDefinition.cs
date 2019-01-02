@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,6 +24,7 @@ public abstract class DialogDefinition : MonoBehaviour
         foreach (Button button in Buttons)
         {
             button.onClick.RemoveAllListeners();
+            button.GetComponent<Image>().color = Color.white;
         }
     }
 
@@ -34,15 +36,18 @@ public abstract class DialogDefinition : MonoBehaviour
         }
     }
 
-    public void BuyDialog(Button YesButton, Button NoButton, bool ReadOnly, UnityAction YesClick, UnityAction NoClick)
+    internal abstract void SetYesButtonColor();
+    internal abstract void SetNoButtonColor();
+
+    public void BuyDialog(Button YesButton, Button NoButton, bool ReadOnly, Action<string> YesClick, Action<string> NoClick)
     {
         Reset(YesButton, NoButton);
         SetGameObjectVisibility(true);
 
         if (!ReadOnly)
         {
-            YesButton.onClick.AddListener(YesClick);
-            NoButton.onClick.AddListener(NoClick);
+            YesButton.onClick.AddListener(delegate() { YesClick(name); });
+            NoButton.onClick.AddListener(delegate () { NoClick(name); });
             AddCloseEvent(YesButton, NoButton);
         }
     }
