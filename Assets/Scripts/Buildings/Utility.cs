@@ -34,7 +34,7 @@ public class Utility : BuyableField
 
     internal override void OnMouseDown()
     {
-        GameObject.Find("Game Controller").GetComponent<GameController>().DialogController.ShowUtility(this);
+        InstanceController.GetDialogController().ShowUtility(this);
     }
 
     internal override int GetValue()

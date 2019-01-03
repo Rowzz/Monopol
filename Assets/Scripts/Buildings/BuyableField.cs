@@ -7,6 +7,7 @@ public abstract class BuyableField : FieldDefinition
     public int Price;
     public int[] Rent;
     internal bool Mortgage;
+    public int Order;
 
 
     internal abstract int GetRent();

@@ -30,7 +30,7 @@ public class RailwayStation : BuyableField
 
     internal override void OnMouseDown()
     {
-        GameObject.Find("Game Controller").GetComponent<GameController>().DialogController.ShowRailwayStation(this);
+        InstanceController.GetDialogController().ShowRailwayStation(this);
     }
 
     internal override int GetValue()

@@ -8,8 +8,8 @@ using UnityEngine.Events;
 
 public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
 {
-    public GameController gameController;
-    private DialogController DialogController { get {return gameController.DialogController; } }
+    private  GameController gameController { get { return InstanceController.GetGameController(); } }
+    private DialogController DialogController { get {return InstanceController.GetDialogController(); } }
     private bool ReadOnly { get { return !gameController.IsOwnerTurn(); } }
 
     //DON'T FORGET TO SET READONLY!!

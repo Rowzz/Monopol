@@ -13,13 +13,12 @@ public class PlayerFigure : MonoBehaviour
     public int Balance {get { return balance; } set {
             if (BelongsToOwner)
             {
-                gameController.DialogController.SetPlayerBalance(value);
+                InstanceController.GetDialogController().SetPlayerBalance(value);
             }
             balance = value;
         } }
     private List<BuyableField> OwnedBuildings = new List<BuyableField>(); // when you want to list all your/your opponents buildings. redundancy for speed
     public int PlayerMovementSpeed;
-    public GameController gameController;
     private Vector3 NextPosition;
     private int PositionsToGo;
     private readonly float MoveFieldTolerance = 0.2f;

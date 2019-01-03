@@ -13,7 +13,6 @@ public class GameController : MonoBehaviourPunCallbacks, IOnEventCallback
     public List<PlayerFigure> Players;
     public CashController CashController;
     public PlayerFigure ActivePlayer;
-    public DialogController DialogController;
 
     // Start is called before the first frame update
     void Start()
@@ -141,7 +140,6 @@ public class GameController : MonoBehaviourPunCallbacks, IOnEventCallback
     public PlayerFigure CreatePlayer(PlayerFigure PlayerInstance, int ID)
     {
         PlayerFigure Player = PlayerInstance ?? new PlayerFigure();
-        Player.gameController = this;
         Player.ID = ID;
         Player.currentField = GameObject.Find("Start").GetComponent<FieldDefinition>();
         Player.BelongsToOwner = PlayerInstance != null;

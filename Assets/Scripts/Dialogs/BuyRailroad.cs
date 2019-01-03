@@ -10,7 +10,7 @@ public class BuyRailroad : BuyBuyableField
     private readonly string BuyInformation = "Möchtest du das den Bahnhof kaufen?";
     private readonly string Information = "Bahnhofinformation";
 
-    public override void Init(int RentCount)
+    internal override void Init(int RentCount)
     {
         base.Init(4);
     }

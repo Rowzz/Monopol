@@ -10,6 +10,7 @@ public abstract class DialogDefinition : MonoBehaviour
     internal bool FadeOut = false;
     private readonly float Step = 0.4f;
 
+    internal abstract void Init();
 
     private void FixedUpdate()
     {
@@ -45,8 +46,6 @@ public abstract class DialogDefinition : MonoBehaviour
         FadeOut = Status;
     }
 
-
-    public abstract void Init(int RentCount);
 
     public void Close()
     {

@@ -8,24 +8,26 @@ public class DialogController : MonoBehaviour
     private BuyBuilding BuyBuildingDialog;
     private BuyUtility BuyUtilityDialog;
     private BuyRailroad BuyRailroadDialog;
-    private Button PlayerBuildings;
+    private PlayerBuildings PlayerBuildingDialog;
+    private Button PlayerBuildingsButton;
     private Button EndTurn;
     private Text Balance;
     private GameController GameController;
 
     public void Awake()
     {
-        PlayerBuildings = GetDialogTransformThroughName("ActionBar").transform.Find("Panel").Find("Buildings").GetComponent<Button>();
-        PlayerBuildings.onClick.RemoveAllListeners();
-        PlayerBuildings.onClick.AddListener(delegate () { ShowBuildingsOfPlayer(); });
-        Balance = GameObject.Find("ActionBar").transform.Find("Panel").Find("Balance").GetComponent<Text>();
-        GameController = GameObject.Find("Game Controller").GetComponent<GameController>();
-        EndTurn = GameObject.Find("ActionBar").transform.Find("Panel").Find("EndTurn").GetComponent<Button>();
+        PlayerBuildingsButton = InstanceController.GetActionBarBuildings();
+        PlayerBuildingsButton.onClick.RemoveAllListeners();
+        PlayerBuildingsButton.onClick.AddListener(delegate () { ShowBuildingsOfPlayer(); });
+        Balance = InstanceController.GetActionBarBalance();
+        GameController = InstanceController.GetGameController();
+        EndTurn = InstanceController.GetActionBarEndTurn();
         EndTurn.onClick.RemoveAllListeners();
         EndTurn.onClick.AddListener(GameController.EndTurn);
-        BuyBuildingDialog = GetDialogTransformThroughName("BuyBuilding").GetComponent<BuyBuilding>();
-        BuyRailroadDialog = GetDialogTransformThroughName("BuyRailwayStation").GetComponent<BuyRailroad>();
-        BuyUtilityDialog = GetDialogTransformThroughName("BuyUtility").GetComponent<BuyUtility>();
+        BuyBuildingDialog = InstanceController.GetBuyBuildingDialog();
+        BuyRailroadDialog = InstanceController.GetBuyRailroadDialog();
+        BuyUtilityDialog = InstanceController.GetBuyUtilityDialog();
+        PlayerBuildingDialog = InstanceController.GetPlayerBuildingsDialog();
         InitDialogs(BuyBuildingDialog, BuyUtilityDialog, BuyRailroadDialog);
     }
 
@@ -33,7 +35,7 @@ public class DialogController : MonoBehaviour
     {
         foreach(DialogDefinition Dialog in Dialogs)
         {
-            Dialog.Init(0);
+            Dialog.Init();
         }
     }
 
@@ -44,19 +46,7 @@ public class DialogController : MonoBehaviour
 
     internal void ShowBuildingsOfPlayer(int? Amount = null)
     {
-        //Changes:
-        //- Hypothek
-        //- Häuser
-        
-        //if Amount == null: only Hypothek
-
-        PlayerFigure player = GameController.GetPlayerOfOwner();
-        if (Amount != null)
-        {
-            //Player has to pay the amount
-            //--> Form cannot be closed
-        }
-        throw new NotImplementedException();
+        PlayerBuildingDialog.Showdialog(GameController.GetPlayerOfOwner(), Amount);
     }
 
     public void BuyBuilding(Building Building, bool ReadOnly, Action<string> YesClick, Action<string> NoClick)

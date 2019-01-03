@@ -11,7 +11,7 @@ public class BuyUtility : BuyBuyableField
     private readonly string BuyInformation = "Möchtest du dieses Spezialfeld kaufen?";
     private readonly string Information = "Spezialfeldinformation";
 
-    public override void Init(int RentCount)
+    internal override void Init(int RentCount)
     {
         base.Init(2);
         dictCount = new Dictionary<int, string>

@@ -80,7 +80,7 @@ public class Building : BuyableField
 
     internal override void OnMouseDown()
     {
-        GameObject.Find("Game Controller").GetComponent<GameController>().DialogController.ShowBuilding(this);
+        InstanceController.GetDialogController().ShowBuilding(this);
     }
 
 

@@ -15,8 +15,12 @@ public abstract class BuyBuyableField : DialogDefinition
     internal Text[] RentText;
     internal Text Header;
 
+    internal override void Init()
+    {
+        Init(0);
+    }
 
-    public override void Init(int RentCount)
+    internal virtual void Init(int RentCount)
     {
         string ButtonPanel = "Button Panel";
         string ColorPanelText = "Color Panel";

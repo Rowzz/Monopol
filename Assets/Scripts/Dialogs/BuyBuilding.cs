@@ -12,7 +12,7 @@ public class BuyBuilding : BuyBuyableField
     private readonly string BuyInformation = "Möchtest du das Haus kaufen?";
     private readonly string Information = "Gebäudeinformation";
 
-    public override void Init(int RentCount)
+    internal override void Init(int RentCount)
     {
         base.Init(7);
         string ColorPanelText = "Color Panel";
