@@ -2,21 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RailwayStation : FieldDefinition
+public class RailwayStation : BuyableField
 {
-    public int Price;
-    public int[] Rent;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public override void Hover(PlayerFigure playerFigure)
     {
@@ -36,13 +23,18 @@ public class RailwayStation : FieldDefinition
 
     }
 
-    private int GetRent()
+    internal override int GetRent()
     {
         return Rent[GetOwnedChildrenCount() - 1];
     }
 
-    private void OnMouseDown()
+    internal override void OnMouseDown()
     {
         GameObject.Find("Game Controller").GetComponent<GameController>().DialogController.ShowRailwayStation(this);
+    }
+
+    internal override int GetValue()
+    {
+        return Mortgage ? 0 : Price / 2;
     }
 }

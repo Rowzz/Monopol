@@ -94,6 +94,11 @@ public class GameController : MonoBehaviourPunCallbacks, IOnEventCallback
         return GameObject.Find("Fields").transform.Find(category).Find(name).GetComponent<FieldDefinition>();
     }
 
+    public BuyableField GetBuyableFieldThroughName(string category, string name)
+    {
+        return GameObject.Find("Fields").transform.Find(category).Find(name).GetComponent<BuyableField>();
+    }
+
     private void CheckPlayer(int ID)
     {
         if(!Players.Any(player => player.ID == ID))

@@ -3,6 +3,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerFigure : MonoBehaviour
@@ -16,7 +17,7 @@ public class PlayerFigure : MonoBehaviour
             }
             balance = value;
         } }
-    private List<FieldDefinition> OwnedBuildings = new List<FieldDefinition>(); // when you want to list all your/your opponents buildings. redundancy for speed
+    private List<BuyableField> OwnedBuildings = new List<BuyableField>(); // when you want to list all your/your opponents buildings. redundancy for speed
     public int PlayerMovementSpeed;
     public GameController gameController;
     private Vector3 NextPosition;
@@ -31,7 +32,7 @@ public class PlayerFigure : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OwnedBuildings = new List<FieldDefinition>();
+        OwnedBuildings = new List<BuyableField>();
     }
 
     // Update is called once per frame
@@ -88,13 +89,18 @@ public class PlayerFigure : MonoBehaviour
         currentField.Hover(this);
     }
 
-    public void AddBuilding(FieldDefinition building)
+    public void AddBuilding(BuyableField building)
     {
         OwnedBuildings.Add(building);
     }
 
-    public void RemoveBuilding(FieldDefinition building)
+    public void RemoveBuilding(BuyableField building)
     {
         OwnedBuildings.Remove(building);
+    }
+
+    internal int GetTotalValue() //without Balance
+    {
+        return OwnedBuildings.Sum(Field => Field.GetValue());
     }
 }

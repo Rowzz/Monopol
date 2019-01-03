@@ -17,13 +17,16 @@ public abstract class DialogDefinition : MonoBehaviour
         {
             var comp = gameObject.GetComponent<CanvasGroup>();
             float step = Time.fixedDeltaTime * Step;
+
             if (comp.alpha <= step)
             {
-                step = comp.alpha;
                 SetGameObjectVisibility(false);
                 DisableFadeOut();
             }
-            gameObject.GetComponent<CanvasGroup>().alpha -= step;
+            else
+            {
+                gameObject.GetComponent<CanvasGroup>().alpha -= step;
+            }
         }
     }
 
@@ -43,7 +46,7 @@ public abstract class DialogDefinition : MonoBehaviour
     }
 
 
-    public abstract void Init();
+    public abstract void Init(int RentCount);
 
     public void Close()
     {
@@ -61,8 +64,14 @@ public abstract class DialogDefinition : MonoBehaviour
         {
             button.onClick.RemoveAllListeners();
             button.GetComponent<Image>().color = Color.white;
+            button.gameObject.SetActive(true);
         }
+    }
+
+    internal void ResetGameObject()
+    {
         gameObject.GetComponent<CanvasGroup>().alpha = 1;
+        SetGameObjectVisibility(true);
     }
 
     public void AddCloseEvent(params Button[] Buttons)
@@ -73,21 +82,9 @@ public abstract class DialogDefinition : MonoBehaviour
         }
     }
 
+
     internal abstract void SetYesButtonColor();
     internal abstract void SetNoButtonColor();
-
-    public void BuyDialog(Button YesButton, Button NoButton, bool ReadOnly, Action<string> YesClick, Action<string> NoClick)
-    {
-        Reset(YesButton, NoButton);
-        SetGameObjectVisibility(true);
-
-        if (!ReadOnly)
-        {
-            YesButton.onClick.AddListener(delegate() { YesClick(name); });
-            NoButton.onClick.AddListener(delegate () { NoClick(name); });
-            //AddCloseEvent(YesButton, NoButton);
-        }
-    }
 
     public void SetButtonText(Button button, string Text) {
         button.transform.GetChild(0).GetComponent<Text>().text = Text;

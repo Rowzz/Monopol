@@ -2,29 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Utility : FieldDefinition
+public class Utility : BuyableField
 {
-    public int Price;
-    public int[] Rent;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public override void Hover(PlayerFigure playerFigure)
     {
         return;
     }
 
-    private int GetRent()
+    internal override int GetRent()
     {
         return Rent[GetRentPointer()];
     }
@@ -47,9 +32,14 @@ public class Utility : FieldDefinition
         }
     }
 
-    private void OnMouseDown()
+    internal override void OnMouseDown()
     {
         GameObject.Find("Game Controller").GetComponent<GameController>().DialogController.ShowUtility(this);
+    }
+
+    internal override int GetValue()
+    {
+        return Mortgage ? 0 : Price / 2;
     }
 
 }

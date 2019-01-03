@@ -17,7 +17,7 @@ public class DialogController : MonoBehaviour
     {
         PlayerBuildings = GetDialogTransformThroughName("ActionBar").transform.Find("Panel").Find("Buildings").GetComponent<Button>();
         PlayerBuildings.onClick.RemoveAllListeners();
-        PlayerBuildings.onClick.AddListener(ShowBuildingsOfPlayer);
+        PlayerBuildings.onClick.AddListener(delegate () { ShowBuildingsOfPlayer(); });
         Balance = GameObject.Find("ActionBar").transform.Find("Panel").Find("Balance").GetComponent<Text>();
         GameController = GameObject.Find("Game Controller").GetComponent<GameController>();
         EndTurn = GameObject.Find("ActionBar").transform.Find("Panel").Find("EndTurn").GetComponent<Button>();
@@ -33,7 +33,7 @@ public class DialogController : MonoBehaviour
     {
         foreach(DialogDefinition Dialog in Dialogs)
         {
-            Dialog.Init();
+            Dialog.Init(0);
         }
     }
 
@@ -42,10 +42,21 @@ public class DialogController : MonoBehaviour
         Balance.text = balance.ToString();
     }
 
-    private void ShowBuildingsOfPlayer()
+    internal void ShowBuildingsOfPlayer(int? Amount = null)
     {
+        //Changes:
+        //- Hypothek
+        //- Häuser
+        
+        //if Amount == null: only Hypothek
+
         PlayerFigure player = GameController.GetPlayerOfOwner();
-        throw new System.NotImplementedException();
+        if (Amount != null)
+        {
+            //Player has to pay the amount
+            //--> Form cannot be closed
+        }
+        throw new NotImplementedException();
     }
 
     public void BuyBuilding(Building Building, bool ReadOnly, Action<string> YesClick, Action<string> NoClick)
@@ -73,6 +84,11 @@ public class DialogController : MonoBehaviour
         BuyRailroadDialog.ShowDialog(Railroad, ReadOnly, YesClick, NoClick);
     }
 
+    internal void PayRent(int Rent, FieldDefinition Field)
+    {
+        throw new NotImplementedException();
+    }
+
     public void BuyUtility(Utility Utility, bool ReadOnly, Action<string> YesClick, Action<string> NoClick)
     {
         BuyUtilityDialog.ShowDialog(Utility, ReadOnly, YesClick, NoClick);
@@ -86,6 +102,21 @@ public class DialogController : MonoBehaviour
     public static DialogDefinition GetDialogThroughName(string name)
     {
         return GameObject.Find("Dialogs").transform.Find(name).GetComponent<DialogDefinition>();
+    }
+
+    public static bool DialogsLocked()
+    {
+        var Dialogs = GameObject.Find("Dialogs").transform;
+        for (int i = 0; i < Dialogs.childCount; i++)
+        {
+            var Transform = Dialogs.GetChild(i);
+            DialogDefinition buyableField = Transform.GetComponent<DialogDefinition>();
+            if (buyableField is BuyBuyableField && ((BuyBuyableField)buyableField).IsLocked())
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void HideDialogs()

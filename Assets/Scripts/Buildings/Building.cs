@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building : FieldDefinition
+public class Building : BuyableField
 {
-    public int Price;
-    public int[] Rent;
     public int HouseCount;
     public int HotelCount;
     public int PricePerHouse;
@@ -38,7 +36,7 @@ public class Building : FieldDefinition
         HouseCount = (HotelCounter > 0 && (HotelCount -= HotelCounter) == 0) ? 4 - HouseCounter : HouseCount - HouseCounter;
     }
 
-    public int GetRent()
+    internal override int GetRent()
     {
         return Rent[GetRentPointer()];
     }
@@ -74,8 +72,13 @@ public class Building : FieldDefinition
         return GetParent().GetComponent<Category>().Color;
     }
 
+    internal override int GetValue()
+    {
+        return Mortgage ? 0 : Price / 2 + HotelCount * PricePerHotel / 2 + HouseCount * PricePerHouse / 2;
+    }
 
-    private void OnMouseDown()
+
+    internal override void OnMouseDown()
     {
         GameObject.Find("Game Controller").GetComponent<GameController>().DialogController.ShowBuilding(this);
     }

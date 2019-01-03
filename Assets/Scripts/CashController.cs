@@ -36,7 +36,7 @@ public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
                 {
                     object[] data = (object[])photonEvent.CustomData;
                     PlayerFigure ActivePlayer = gameController.GetPlayerThroughID((int)data[0]);
-                    FieldDefinition Field = gameController.GetFieldThroughName(data[1].ToString(), data[2].ToString());
+                    BuyableField Field = gameController.GetBuyableFieldThroughName(data[1].ToString(), data[2].ToString());
                     int Price = (int)data[3];
                     BuyFieldSync(Field, Price, ActivePlayer);
                     DialogDefinition Dialog = DialogController.GetDialogThroughName(data[4].ToString());
@@ -49,6 +49,26 @@ public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
                 {
                     DialogDefinition Dialog = DialogController.GetDialogThroughName(photonEvent.CustomData.ToString());
                     Dialog.SetNoButtonColor();
+                }
+                break;
+
+            //Pay Rent
+            case 12:
+                {
+                    object[] data = (object[])photonEvent.CustomData;
+                    PlayerFigure ActivePlayer = gameController.GetPlayerThroughID((int)data[0]);
+                    int Amount = (int)data[1];
+                    FieldDefinition Field = gameController.GetFieldThroughName(data[2].ToString(), data[3].ToString());
+
+                    PayAmountSync(ActivePlayer,Amount,Field.Owner);
+                    DialogController.PayRent(Amount, Field);
+                }
+                break;
+
+            //Sell Fields
+            case 13:
+                {
+
                 }
                 break;
         }
@@ -73,22 +93,33 @@ public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
 
     public void PayRent(FieldDefinition Field, int Rent, PlayerFigure ActivePlayer)
     {
-        if(EnoughMoney(ActivePlayer, Rent)) //show Dialog?
+        //FieldDefinition because Tax is seen as Rent
+        if(EnoughMoney(ActivePlayer, Rent))
         {
-            PayAmount(ActivePlayer, Rent, Field.Owner);
+            PayAmount(ActivePlayer, Rent, Field.GetParent().name, Field.name);
         }
         else
         {
             int Amount = Rent - ActivePlayer.Balance;
-            SellFields(ActivePlayer, null, Amount);
-            PayAmount(ActivePlayer, Amount, Field.Owner);
+            SellFields(ActivePlayer, Amount);
+
+            PayAmount(ActivePlayer, Rent, Field.GetParent().name, Field.name);
         }
     }
 
-    private void PayAmount(PlayerFigure ActivePlayer, int Amount, PlayerFigure Owner)
+
+    private void PayAmount(PlayerFigure ActivePlayer, int Amount, string Category, string Field)
+    {
+        if (!ReadOnly) //Only ActivePlayer sends this message. else n players send this message to n players
+        {
+            NetworkingController.SendData(new object[] { ActivePlayer.ID, Amount, Category, Field }, 12, true);
+        }
+    }
+
+    private void PayAmountSync(PlayerFigure ActivePlayer, int Amount, PlayerFigure Owner)
     {
         ActivePlayer.Balance -= Amount;
-        if(Owner != null)
+        if (Owner != null)
         {
             Owner.Balance += Amount;
         }
@@ -118,7 +149,7 @@ public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
         }
     }
 
-    private Action<string> BuyFieldYesAction(FieldDefinition Field, int Price, PlayerFigure ActivePlayer)
+    private Action<string> BuyFieldYesAction(BuyableField Field, int Price, PlayerFigure ActivePlayer)
     {
         return delegate(string Name) { BuyFieldYes(Field, Price, ActivePlayer, Name); };
     }
@@ -133,47 +164,39 @@ public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
         return ActivePlayer.Balance >= Price;
     }
 
-    private void BuyFieldYes(FieldDefinition Field, int Price, PlayerFigure ActivePlayer, string Name)
+    private void BuyFieldYes(BuyableField Field, int Price, PlayerFigure ActivePlayer, string Name)
     {
         NetworkingController.SendData(new object[] { ActivePlayer.ID, Field.GetParent().name, Field.name, Price, Name}, 10, true);
     }
 
-    private void BuyFieldSync(FieldDefinition Field, int Price, PlayerFigure ActivePlayer)
+    private void BuyFieldSync(BuyableField Field, int Price, PlayerFigure ActivePlayer)
     {
         ActivePlayer.Balance -= Price;
         AddField(ActivePlayer, Field);
     }
 
-    private void AddField(PlayerFigure ActivePlayer, FieldDefinition Field)
+    private void AddField(PlayerFigure ActivePlayer, BuyableField Field)
     {
         ActivePlayer.AddBuilding(Field);
         Field.Owner = ActivePlayer;
     }
 
-    public void SellFields(PlayerFigure PlayerFrom, PlayerFigure PlayerTo, int Amount)
+    public void SellFields(PlayerFigure PlayerFrom, int Amount)
     {
-        if (PlayerTo != null)
-        {
-            //sell Fields till amount <=0
-            List<FieldDefinition> soldFields = new List<FieldDefinition>();
-
-            //Dictionary<Building,HouseHotelMatrix>
-            //foreach Key in dict
-            //key.removeHouses(val.HousesCount, val.HotelCount);
-
-            //but first sell houses of buildings, then sell buildings
-            foreach (FieldDefinition field in soldFields)
+        //Hypothek
+        //Amount = Amount left
+        //sell Fields till amount <=0
+        if (!ReadOnly) {
+            if (PlayerFrom.GetTotalValue() < Amount)
             {
-                PlayerFrom.RemoveBuilding(field);
-                field.Owner = PlayerTo;
+                //Player lost
+                throw new NotImplementedException();
+            }
+            else
+            {
+                DialogController.ShowBuildingsOfPlayer(Amount);
             }
         }
-        else //if null then he is paying tax or something
-        {
-            //Hypothek
-            //soldFields.setLocked(true)
-        }
-        throw new System.NotImplementedException();
     }
 
     public void DrawChanceCard(List<PlayerFigure> Players, PlayerFigure ActivePlayer, int DiceValue)
