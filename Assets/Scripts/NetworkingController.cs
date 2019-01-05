@@ -56,8 +56,12 @@ public class NetworkingController : MonoBehaviourPunCallbacks
     }
 
     public void InstantiatePlayer()
-    { 
-        PlayerFigure Player = PhotonNetwork.Instantiate("Player", GameObject.Find("Start").transform.position, Quaternion.identity).GetComponent<PlayerFigure>();
+    {
+        Vector3 StartField = GameObject.Find("Start").transform.position;
+        StartField.y += 1; // Adjust the Spawning poisition to 1 above ground, prevents falling threw
+        StartField.x += 1.5f;
+
+        PlayerFigure Player = PhotonNetwork.Instantiate("Player", StartField, Quaternion.Euler(-90f, 90f, 0)).GetComponent<PlayerFigure>();
         Player.GetComponent<MeshRenderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         int ID = Player.GetComponent<PhotonView>().OwnerActorNr;
 
