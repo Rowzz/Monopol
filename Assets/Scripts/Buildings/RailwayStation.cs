@@ -35,6 +35,17 @@ public class RailwayStation : BuyableField
 
     internal override int GetValue()
     {
-        return Mortgage ? 0 : Price / 2;
+        return CalcValue(Mortgage);
     }
+
+    private int CalcValue(bool mortgage)
+    {
+        return mortgage ? 0 : Price / 2;
+    }
+
+    internal override int GetValue(bool mortgage, int houseCount)
+    {
+        return CalcValue(mortgage);
+    }
+
 }

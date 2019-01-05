@@ -17,7 +17,7 @@ public class PlayerFigure : MonoBehaviour
             }
             balance = value;
         } }
-    private List<BuyableField> OwnedBuildings = new List<BuyableField>(); // when you want to list all your/your opponents buildings. redundancy for speed
+    private List<BuyableField> OwnedBuildings; // when you want to list all your/your opponents buildings. redundancy for speed
     public int PlayerMovementSpeed;
     private Vector3 NextPosition;
     private int PositionsToGo;
@@ -28,13 +28,11 @@ public class PlayerFigure : MonoBehaviour
     public int ID;
     //Cards (e.g. escape jail)
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         OwnedBuildings = new List<BuyableField>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (PositionsToGo > 0)
@@ -101,5 +99,10 @@ public class PlayerFigure : MonoBehaviour
     internal int GetTotalValue() //without Balance
     {
         return OwnedBuildings.Sum(Field => Field.GetValue());
+    }
+
+    internal List<BuyableField> GetOwnedBuildings()
+    {
+        return OwnedBuildings.OrderBy(building => building.GetParent().GetComponent<Category>().Order).ThenBy(building => building.Order).ToList();
     }
 }

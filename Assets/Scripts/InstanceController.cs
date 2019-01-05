@@ -16,9 +16,14 @@ public class InstanceController : MonoBehaviour
     private readonly static string BuildingsOfPlayerString = "BuildingsOfPlayer";
     private readonly static string ActionBarString = "ActionBar";
     private readonly static string ActionBarPanelString = "Panel";
+    private readonly static string BuildingsOfPlayerPanel1String = "Panel";
+    private readonly static string BuildingsOfPlayerPanel2String = "MortgageAndHouses";
     private readonly static string[] ActionBarEndTurnString = new string[2] { ActionBarPanelString, "EndTurn" };
     private readonly static string[] ActionBarBuildingsString = new string[2] { ActionBarPanelString, "Buildings" };
     private readonly static string[] ActionBarBalanceString = new string[2] { ActionBarPanelString, "Balance" };
+    private readonly static string[] BuildingsOfPlayerAcceptString = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "BtnAccept" };
+    private readonly static string[] BuildingsOfPlayerCancelString = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "BtnCancel" };
+    private readonly static string[] BuildingsOfPlayerBalanceString = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Balance" };
     private static GameController gameController;
     private static NetworkingController networkController;
     private static DialogController dialogController;
@@ -118,6 +123,21 @@ public class InstanceController : MonoBehaviour
     internal static PlayerBuildings GetPlayerBuildingsDialog()
     {
         return GetDialogs().Find(BuildingsOfPlayerString).GetComponent<PlayerBuildings>();
+    }
+
+    internal static Button GetPlayerBuildingsDialogAcceptButton()
+    {
+        return GetTransform(GetDialogs().Find(BuildingsOfPlayerString), BuildingsOfPlayerAcceptString).GetComponent<Button>();
+    }
+
+    internal static Button GetPlayerBuildingsDialogCancelButton()
+    {
+        return GetTransform(GetDialogs().Find(BuildingsOfPlayerString), BuildingsOfPlayerCancelString).GetComponent<Button>();
+    }
+
+    internal static Text GetPlayerBuildingsDialogBalance()
+    {
+        return GetTransform(GetDialogs().Find(BuildingsOfPlayerString), BuildingsOfPlayerBalanceString).GetComponent<Text>();
     }
 
     #endregion

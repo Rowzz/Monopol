@@ -21,6 +21,11 @@ public class Building : BuyableField
         
     }
 
+    internal int GetTotalHouseCount()
+    {
+        return HouseCount + HotelCount * 5;
+    }
+
     public bool IsFullyUpgraded()
     {
         return HotelCount == 1;
@@ -74,13 +79,37 @@ public class Building : BuyableField
 
     internal override int GetValue()
     {
-        return Mortgage ? 0 : Price / 2 + HotelCount * PricePerHotel / 2 + HouseCount * PricePerHouse / 2;
+        return CalcValue(Mortgage, HouseCount, HotelCount);
+    }
+
+    private int CalcValue(bool mortgage, int houseCount, int hotelCount)
+    {
+        return mortgage ? 0 : Price / 2 + hotelCount * PricePerHotel / 2 + houseCount * PricePerHouse / 2;
+    }
+
+    internal override int GetValue(bool mortgage, int houseCount)
+    {
+        int hotels= 0, houses=0;
+        if(houseCount == (MaxHotels + MaxHouses))
+        {
+            hotels = 1;
+        }
+        else
+        {
+            houses = houseCount;
+        }
+        return CalcValue(mortgage, houses, hotels);
     }
 
 
     internal override void OnMouseDown()
     {
         InstanceController.GetDialogController().ShowBuilding(this);
+    }
+
+    internal override bool HasHouses()
+    {
+        return true;
     }
 
 
