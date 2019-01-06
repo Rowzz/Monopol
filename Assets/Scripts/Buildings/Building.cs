@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Building : BuyableField
 {
@@ -113,13 +114,14 @@ public class Building : BuyableField
 
     internal override void OnMouseDown()
     {
-        InstanceController.GetDialogController().ShowBuilding(this);
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            InstanceController.GetDialogController().ShowBuilding(this);
+        }
     }
 
     internal override bool HasHouses()
     {
         return OwnsEveryBuildingOfCategory();
     }
-
-
 }

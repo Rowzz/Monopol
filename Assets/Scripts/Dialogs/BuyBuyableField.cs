@@ -11,9 +11,9 @@ public abstract class BuyBuyableField : DialogDefinition
     internal Text Name;
     internal Image ColorPanel;
     internal Text Price;
-    internal readonly string RentPanel = "Rent Panel";
     internal Text[] RentText;
     internal Text Header;
+    internal Transform DefaultParent;
 
     internal override void Init()
     {
@@ -22,22 +22,19 @@ public abstract class BuyBuyableField : DialogDefinition
 
     internal virtual void Init(int RentCount)
     {
-        string ButtonPanel = "Button Panel";
-        string ColorPanelText = "Color Panel";
-        string PricePanel = "Price Panel";
+        DefaultParent = transform.Find("Panel");
+        Name = InstanceController.GetBuyFieldDialogName(transform);
+        YesButton = InstanceController.GetBuyFieldDialogYesButton(transform);
+        NoButton = InstanceController.GetBuyFieldDialogNoButton(transform);
+        Price = InstanceController.GetBuyFieldDialogPrice(transform);
+        ColorPanel = InstanceController.GetBuyFieldDialogColorPanel(transform);
 
-        Name = FindChild(ColorPanelText, "Name").GetComponent<Text>();
-        YesButton = FindChild(ButtonPanel, "Yes Button").GetComponent<Button>();
-        NoButton = FindChild(ButtonPanel, "No Button").GetComponent<Button>();
-        Price = FindChild(PricePanel, "Price").GetComponent<Text>();
-        ColorPanel = FindChild(ColorPanelText).GetComponent<Image>();
-        
-        Header = FindChild("Header Panel", "Text").GetComponent<Text>();
+        Header = InstanceController.GetBuyFieldDialogHeader(transform);
 
         RentText = new Text[RentCount];
         for (int i = 0; i < RentText.Length; i++)
         {
-            RentText[i] = FindChild(RentPanel, "Rent", i.ToString()).GetComponent<Text>();
+            RentText[i] = InstanceController.GetBuyFieldDialogRent(i, transform);
         }
     }
 
@@ -55,6 +52,7 @@ public abstract class BuyBuyableField : DialogDefinition
 
     internal void ShowDialog(BuyableField Building, bool ReadOnly, Action<string> YesClick, Action<string> NoClick)
     {
+        //InstanceController.GetBuyFieldDialoPanel(transform).SetParent(DefaultParent);
         Header.text = BuyBuildingInformation();
         SetBuildingInformation(Building);
         SetButtonText(YesButton, "Ja");
@@ -71,21 +69,19 @@ public abstract class BuyBuyableField : DialogDefinition
     }
 
 
-    internal void ShowDialog(BuyableField Building)
+    internal void ShowDialog(BuyableField Building, Transform Parent = null)
     {
-        if (!DialogController.DialogsLocked())
-        {
-            DialogController.HideDialogs();
-            Reset(YesButton, NoButton);
-            ResetGameObject();
+        Reset(YesButton, NoButton);
+        //InstanceController.GetBuyFieldDialoPanel(transform).position = Parent?.position ?? DefaultParent.position;
+        //InstanceController.GetBuyFieldDialoPanel(transform).SetParent(Parent ?? DefaultParent);
+        ResetGameObject();
 
-            Header.text = BuildingInformation();
-            SetBuildingInformation(Building);
+        Header.text = BuildingInformation();
+        SetBuildingInformation(Building);
 
-            NoButton.gameObject.SetActive(false);
-            SetButtonText(YesButton, "OK");
-            AddCloseEvent(YesButton);
-        }
+        NoButton.gameObject.SetActive(false);
+        SetButtonText(YesButton, "OK");
+        AddCloseEvent(YesButton);
     }
 
     internal virtual void SetBuildingInformation(BuyableField Building)

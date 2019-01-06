@@ -15,13 +15,8 @@ public class BuyBuilding : BuyBuyableField
     internal override void Init(int RentCount)
     {
         base.Init(7);
-        string ColorPanelText = "Color Panel";
-        string HousePanel = "Price House Panel";
-        
-        ColorPanel = FindChild(ColorPanelText).GetComponent<Image>();
-        
-        HousePrice = FindChild(HousePanel, "Price", "House").GetComponent<Text>();
-        HotelPrice = FindChild(HousePanel, "Price", "Hotel").GetComponent<Text>();
+        HousePrice = InstanceController.GetBuyFieldDialogHotelPrice(transform);
+        HotelPrice = InstanceController.GetBuyFieldDialogHousePrice(transform);
     }
 
     internal override void SetBuildingInformation(BuyableField Field)

@@ -59,9 +59,11 @@ public class PlayerBuildings : DialogDefinition
             foreach (BuyableField Field in Buildings)
             {
                 Transform Row = Instantiate(Resources.Load<GameObject>("BuildingItem"), BuildingsPanel).transform;
+                Row.GetComponent<BuildingItem>().Field = Field;
                 Transform HousePanel = Row.Find("HousePanel");
+                
                 Text ResultText = Row.Find("Result").GetComponent<Text>();
-                ResultText.text = string.Empty;
+                ResultText.text = settingsController.FormatNumber(0);
                 DialogBuildingValues Item = new DialogBuildingValues(Field, ResultText, AllowedToBuy, UpdateValues);
                 Button Mortgage = Row.Find("BtnMortgage").GetComponent<Button>();
                 Mortgage.onClick.RemoveAllListeners();

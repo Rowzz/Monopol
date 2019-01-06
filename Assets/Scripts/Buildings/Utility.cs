@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Utility : BuyableField
 {
@@ -34,7 +35,10 @@ public class Utility : BuyableField
 
     internal override void OnMouseDown()
     {
-        InstanceController.GetDialogController().ShowUtility(this);
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            InstanceController.GetDialogController().ShowUtility(this);
+        }
     }
 
     internal override int GetValue()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class RailwayStation : BuyableField
 {
@@ -30,7 +31,10 @@ public class RailwayStation : BuyableField
 
     internal override void OnMouseDown()
     {
-        InstanceController.GetDialogController().ShowRailwayStation(this);
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            InstanceController.GetDialogController().ShowRailwayStation(this);
+        }
     }
 
     internal override int GetValue()

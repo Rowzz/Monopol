@@ -54,19 +54,19 @@ public class DialogController : MonoBehaviour
         BuyBuildingDialog.ShowDialog(Building, ReadOnly, YesClick, NoClick);
     }
 
-    public void ShowBuilding(Building Building)
+    public void ShowBuilding(Building Building, Transform Parent = null)
     {
-        BuyBuildingDialog.ShowDialog(Building);
+        BuyBuildingDialog.ShowDialog(Building, Parent);
     }
 
-    public void ShowUtility(Utility Building)
+    public void ShowUtility(Utility Building, Transform Parent = null)
     {
-        BuyUtilityDialog.ShowDialog(Building);
+        BuyUtilityDialog.ShowDialog(Building, Parent);
     }
 
-    public void ShowRailwayStation(RailwayStation Building)
+    public void ShowRailwayStation(RailwayStation Building, Transform Parent = null)
     {
-        BuyRailroadDialog.ShowDialog(Building);
+        BuyRailroadDialog.ShowDialog(Building, Parent);
     }
 
     public void BuyRailwayStation(RailwayStation Railroad, bool ReadOnly, Action<string> YesClick, Action<string> NoClick)
@@ -92,22 +92,6 @@ public class DialogController : MonoBehaviour
     public static DialogDefinition GetDialogThroughName(string name)
     {
         return GameObject.Find("Dialogs").transform.Find(name).GetComponent<DialogDefinition>();
-    }
-
-    public static bool DialogsLocked()
-    {
-        var Dialogs = GameObject.Find("Dialogs").transform;
-        for (int i = 0; i < Dialogs.childCount; i++)
-        {
-            var Transform = Dialogs.GetChild(i);
-            DialogDefinition Field = Transform.GetComponent<DialogDefinition>();
-
-            if (Field != null && Field.IsLocked())
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
     public static void HideDialogs()

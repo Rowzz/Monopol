@@ -20,16 +20,32 @@ public class InstanceController : MonoBehaviour
     private readonly static string ActionBarPanelString = "Panel";
     private readonly static string BuildingsOfPlayerPanel1String = "Panel";
     private readonly static string BuildingsOfPlayerPanel2String = "MortgageAndHouses";
-    private readonly static string[] ActionBarEndTurnString = new string[2] { ActionBarPanelString, "EndTurn" };
-    private readonly static string[] ActionBarBuildingsString = new string[2] { ActionBarPanelString, "Buildings" };
-    private readonly static string[] ActionBarBalanceString = new string[2] { ActionBarPanelString, "Balance" };
-    private readonly static string[] BuildingsOfPlayerAcceptString = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "BtnAccept" };
-    private readonly static string[] BuildingsOfPlayerCancelString = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "BtnCancel" };
-    private readonly static string[] BuildingsOfPlayerBalanceString = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Balance" };
-    private readonly static string[] BuildingsOfPlayerBuildingsPanel = new string[4] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Buildings", "Grid" };
-    private readonly static string[] BuildingsOfPlayerCosts = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Costs" };
-    private readonly static string[] BuildingsOfPlayerAmount = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Amount" };
-    private readonly static string[] BuildingsOfPlayerAmountLabel = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "AmountLabel" };
+    private readonly static string BuyFieldDialogPanelString = "Panel";
+    private readonly static string BuyFieldDialogButtonPanel = "Button Panel";
+    private readonly static string BuyFieldDialogColorPanelString = "Color Panel";
+    private readonly static string BuyFieldDialogHousePanelString = "Price House Panel";
+    private readonly static string BuyFieldDialogHousePanel2 = "Price";
+    private readonly static string[] BuyFieldDialogName = new string[] { BuyFieldDialogPanelString, BuyFieldDialogPanelString, BuyFieldDialogColorPanelString, "Name"};
+    private readonly static string[] BuyFieldDialogPanel = new string[] { BuyFieldDialogPanelString, BuyFieldDialogPanelString};
+    private readonly static string[] BuyFieldDialogHotel = new string[] { BuyFieldDialogPanelString, BuyFieldDialogPanelString, BuyFieldDialogHousePanelString, BuyFieldDialogHousePanel2, "Hotel" };
+    private readonly static string[] BuyFieldDialogHouse = new string[] { BuyFieldDialogPanelString, BuyFieldDialogPanelString, BuyFieldDialogHousePanelString, BuyFieldDialogHousePanel2, "House" };
+    private readonly static string[] BuyFieldDialogHeader = new string[] { BuyFieldDialogPanelString, BuyFieldDialogPanelString, "Header Panel", "Text" };
+    private readonly static string[] BuyFieldDialogRent = new string[] { BuyFieldDialogPanelString, BuyFieldDialogPanelString, "Rent Panel", "Rent"};
+    private readonly static string[] BuyFieldDialogPrice = new string[] { BuyFieldDialogPanelString, BuyFieldDialogPanelString, "Price Panel", "Price" };
+    private readonly static string[] BuyFieldDialogColorPanel = new string[] { BuyFieldDialogPanelString, BuyFieldDialogPanelString, BuyFieldDialogColorPanelString };
+    private readonly static string[] BuyFieldDialogYesButton = new string[] { BuyFieldDialogPanelString, BuyFieldDialogPanelString, BuyFieldDialogButtonPanel, "Yes Button" };
+    private readonly static string[] BuyFieldDialogNoButton = new string[] { BuyFieldDialogPanelString, BuyFieldDialogPanelString, BuyFieldDialogButtonPanel, "No Button" };
+    private readonly static string[] ActionBarEndTurnString = new string[] { ActionBarPanelString, "EndTurn" };
+    private readonly static string[] ActionBarBuildingsString = new string[] { ActionBarPanelString, "Buildings" };
+    private readonly static string[] ActionBarBalanceString = new string[] { ActionBarPanelString, "Balance" };
+    private readonly static string[] BuildingsOfPlayerAcceptString = new string[] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "BtnAccept" };
+    private readonly static string[] BuildingsOfPlayerCancelString = new string[] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "BtnCancel" };
+    private readonly static string[] BuildingsOfPlayerBalanceString = new string[] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Balance" };
+    private readonly static string[] BuildingsOfPlayerBuildingsPanel = new string[] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Buildings", "Grid" };
+    private readonly static string[] BuildingsOfPlayerCosts = new string[] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Costs" };
+    private readonly static string[] BuildingsOfPlayerAmount = new string[] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Amount" };
+    private readonly static string[] BuildingsOfPlayerAmountLabel = new string[] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "AmountLabel" };
+    private readonly static string[] BuildingsOfPlayeFieldInformation = new string[] { BuildingsOfPlayerPanel1String, "FieldInformation"};
     private static GameController gameController;
     private static NetworkingController networkController;
     private static DialogController dialogController;
@@ -120,6 +136,58 @@ public class InstanceController : MonoBehaviour
         return GetDialogs().Find(BuyUtilityString).GetComponent<BuyUtility>();
     }
 
+    internal static Text GetBuyFieldDialogName(Transform transform)
+    {
+        return GetTransform(transform, BuyFieldDialogName).GetComponent<Text>();
+    }
+
+    internal static Transform GetBuyFieldDialoPanel(Transform transform)
+    {
+        return GetTransform(transform, BuyFieldDialogPanel);
+    }
+
+    internal static Text GetBuyFieldDialogHeader(Transform transform)
+    {
+        return GetTransform(transform, BuyFieldDialogHeader).GetComponent<Text>();
+    }
+
+    internal static Text GetBuyFieldDialogHotelPrice(Transform transform)
+    {
+        return GetTransform(transform, BuyFieldDialogHotel).GetComponent<Text>();
+    }
+
+    internal static Text GetBuyFieldDialogHousePrice(Transform transform)
+    {
+        return GetTransform(transform, BuyFieldDialogHouse).GetComponent<Text>();
+    }
+
+    internal static Text GetBuyFieldDialogRent(int Counter, Transform transform)
+    {
+        List<string> temp = new List<string>(BuyFieldDialogRent);
+        temp.Add(Counter.ToString());
+        return GetTransform(transform, temp.ToArray()).GetComponent<Text>();
+    }
+
+    internal static Button GetBuyFieldDialogYesButton(Transform transform)
+    {
+        return GetTransform(transform, BuyFieldDialogYesButton).GetComponent<Button>();
+    }
+
+    internal static Button GetBuyFieldDialogNoButton(Transform transform)
+    {
+        return GetTransform(transform, BuyFieldDialogNoButton).GetComponent<Button>();
+    }
+
+    internal static Text GetBuyFieldDialogPrice(Transform transform)
+    {
+        return GetTransform(transform, BuyFieldDialogPrice).GetComponent<Text>();
+    }
+
+    internal static Image GetBuyFieldDialogColorPanel(Transform transform)
+    {
+        return GetTransform(transform, BuyFieldDialogColorPanel).GetComponent<Image>();
+    }
+
     internal static PlayerBuildings GetPlayerBuildingsDialog()
     {
         return GetDialogs().Find(BuildingsOfPlayerString).GetComponent<PlayerBuildings>();
@@ -157,6 +225,11 @@ public class InstanceController : MonoBehaviour
     internal static Text GetPlayerBuildingsDialogAmountLabel()
     {
         return GetTransform(GetDialogs().Find(BuildingsOfPlayerString), BuildingsOfPlayerAmountLabel).GetComponent<Text>();
+    }
+
+    internal static Transform GetPlayerBuildingsDialogFieldInformation()
+    {
+        return GetTransform(GetDialogs().Find(BuildingsOfPlayerString), BuildingsOfPlayeFieldInformation);
     }
 
     #endregion
