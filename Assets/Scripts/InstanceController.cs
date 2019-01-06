@@ -26,7 +26,7 @@ public class InstanceController : MonoBehaviour
     private readonly static string[] BuildingsOfPlayerAcceptString = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "BtnAccept" };
     private readonly static string[] BuildingsOfPlayerCancelString = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "BtnCancel" };
     private readonly static string[] BuildingsOfPlayerBalanceString = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Balance" };
-    private readonly static string[] BuildingsOfPlayerBuildingsPanel = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Buildings" };
+    private readonly static string[] BuildingsOfPlayerBuildingsPanel = new string[4] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Buildings", "Grid" };
     private readonly static string[] BuildingsOfPlayerCosts = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Costs" };
     private readonly static string[] BuildingsOfPlayerAmount = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Amount" };
     private readonly static string[] BuildingsOfPlayerAmountLabel = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "AmountLabel" };
