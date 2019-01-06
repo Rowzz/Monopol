@@ -20,7 +20,7 @@ public class BuyRailroad : BuyBuyableField
     {
         for (int i = 0; i < Rent.Length; i++)
         {
-            RentText[i].text = GameController.GetCurrency(Rent[i]);
+            RentText[i].text = settingsController.FormatNumber(Rent[i]);
         }
     }
 

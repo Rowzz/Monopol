@@ -74,22 +74,22 @@ public class CashController : MonoBehaviourPunCallbacks, IOnEventCallback
         }
     }
 
-    public void BuyHouse(Building building, PlayerFigure ActivePlayer)
-    {
-        int Houses = building.HouseCount;
-        int Hotels = building.HotelCount;
-        int PricePerHotel = building.PricePerHotel;
-        int PricePerHouse = building.PricePerHouse;
-        int MaxHouses = building.MaxHouses;
-        int MaxHotels = building.MaxHotels;
-        int BoughtHotels = 0, BoughtHouses = 0;
-        //showDialog
+    //public void BuyHouse(Building building, PlayerFigure ActivePlayer)
+    //{
+    //    int Houses = building.HouseCount;
+    //    int Hotels = building.HotelCount;
+    //    int PricePerHotel = building.PricePerHotel;
+    //    int PricePerHouse = building.PricePerHouse;
+    //    int MaxHouses = building.MaxHouses;
+    //    int MaxHotels = building.MaxHotels;
+    //    int BoughtHotels = 0, BoughtHouses = 0;
+    //    //showDialog
 
-        ActivePlayer.Balance -= BoughtHouses * PricePerHouse + BoughtHotels * PricePerHotel;
-        building.AddHouse(Houses, Hotels);
+    //    ActivePlayer.Balance -= BoughtHouses * PricePerHouse + BoughtHotels * PricePerHotel;
+    //    building.AddHouse(Houses, Hotels);
 
-        throw new System.NotImplementedException();
-    }
+    //    throw new System.NotImplementedException();
+    //}
 
     public void PayRent(FieldDefinition Field, int Rent, PlayerFigure ActivePlayer)
     {

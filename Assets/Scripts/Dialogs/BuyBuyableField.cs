@@ -91,7 +91,7 @@ public abstract class BuyBuyableField : DialogDefinition
     internal virtual void SetBuildingInformation(BuyableField Building)
     {
         Name.text = Building.Name;
-        Price.text = GameController.GetCurrency(Building.Price);
+        Price.text = settingsController.FormatNumber(Building.Price);
         SetRent(Building.Rent);
     }
 
@@ -99,7 +99,7 @@ public abstract class BuyBuyableField : DialogDefinition
     internal abstract string BuyBuildingInformation();
     internal abstract string BuildingInformation();
 
-    internal bool IsLocked()
+    internal override bool IsLocked()
     {
         return NoButton.gameObject.activeSelf && gameObject.activeSelf;
     }

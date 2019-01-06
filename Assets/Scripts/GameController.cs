@@ -13,6 +13,7 @@ public class GameController : MonoBehaviourPunCallbacks, IOnEventCallback
     public List<PlayerFigure> Players;
     public CashController CashController;
     public PlayerFigure ActivePlayer;
+    private SettingsController settingsController { get { return InstanceController.GetSettingsController(); } }
 
     // Start is called before the first frame update
     void Start()
@@ -129,23 +130,21 @@ public class GameController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         Players.Add(CreatePlayer(Player, ID));
         
-        Players = Players.OrderBy(player => player.ID).ToList();
-        //Players.Sort();
-        Players.ForEach(player => Debug.Log($"{player.ID}, {player.BelongsToOwner}"));
+        Players = SortPlayers(Players);
+        
         SetActivePlayer(0);
         //Should be refactored
         //always the turn of the first Player on start
     }
 
+    private List<PlayerFigure> SortPlayers(List<PlayerFigure> Players)
+    {
+        return Players.OrderBy(player => player.ID).ToList();
+    }
+
     public PlayerFigure CreatePlayer(PlayerFigure PlayerInstance, int ID)
     {
-        PlayerFigure Player = PlayerInstance ?? new PlayerFigure();
-        Player.ID = ID;
-        Player.currentField = GameObject.Find("Start").GetComponent<FieldDefinition>();
-        Player.BelongsToOwner = PlayerInstance != null;
-        Player.Balance = 2000;
-        Player.PlayerMovementSpeed = 10;
-        return Player;
+        return settingsController.BuildPlayer(PlayerInstance, ID);
     }
 
 
@@ -153,7 +152,7 @@ public class GameController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         int index = Players.IndexOf(ActivePlayer)+1;
         index = index >= Players.Count ? 0 : index;
-        Debug.LogFormat($"index of new player set to: {index}");
+        
         SetActivePlayer(index);
     }
 
@@ -173,12 +172,6 @@ public class GameController : MonoBehaviourPunCallbacks, IOnEventCallback
     public bool IsOwnerTurn()
     {
         return ActivePlayer.BelongsToOwner;
-    }
-
-
-    public static string GetCurrency(int Price)
-    {
-        return Price + Currency;
     }
 
     public PlayerFigure GetPlayerOfOwner()

@@ -14,7 +14,7 @@ public abstract class BuyableField : FieldDefinition
     internal abstract void OnMouseDown();
 
     internal abstract int GetValue();
-    internal abstract int GetValue(bool mortgage, int houseCount);
+    internal abstract int CalcDifference(bool mortgage, int houseCount);
     internal virtual bool HasHouses()
     {
         return false;

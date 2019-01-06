@@ -9,7 +9,7 @@ public abstract class DialogDefinition : MonoBehaviour
 {
     internal bool FadeOut = false;
     private readonly float Step = 0.4f;
-
+    internal SettingsController settingsController { get { return InstanceController.GetSettingsController(); } }
     internal abstract void Init();
 
     private void FixedUpdate()
@@ -99,5 +99,7 @@ public abstract class DialogDefinition : MonoBehaviour
         }
         return result.gameObject;
     }
+
+    internal abstract bool IsLocked();
 
 }

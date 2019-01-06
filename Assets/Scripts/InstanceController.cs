@@ -9,6 +9,8 @@ public class InstanceController : MonoBehaviour
     private readonly static string gameControllerString = "Game Controller";
     private readonly static string dialogControllerString = "DialogController";
     private readonly static string networkControllerString = "Networking Controller";
+    private readonly static string cashControllerString = "Cash Controller";
+    private readonly static string settingsControllerString = "SettingsController";
     private readonly static string DialogsString = "Dialogs";
     private readonly static string BuyBuildingsString = "BuyBuilding";
     private readonly static string BuyRailwayStationString = "BuyRailwayStation";
@@ -24,18 +26,16 @@ public class InstanceController : MonoBehaviour
     private readonly static string[] BuildingsOfPlayerAcceptString = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "BtnAccept" };
     private readonly static string[] BuildingsOfPlayerCancelString = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "BtnCancel" };
     private readonly static string[] BuildingsOfPlayerBalanceString = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Balance" };
+    private readonly static string[] BuildingsOfPlayerBuildingsPanel = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Buildings" };
+    private readonly static string[] BuildingsOfPlayerCosts = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Costs" };
+    private readonly static string[] BuildingsOfPlayerAmount = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "Amount" };
+    private readonly static string[] BuildingsOfPlayerAmountLabel = new string[3] { BuildingsOfPlayerPanel1String, BuildingsOfPlayerPanel2String, "AmountLabel" };
     private static GameController gameController;
     private static NetworkingController networkController;
     private static DialogController dialogController;
     private static CashController cashController;
-
-    private void Awake()
-    {
-        gameController = GameObject.Find(gameControllerString).GetComponent<GameController>();
-        dialogController = GameObject.Find(dialogControllerString).GetComponent<DialogController>();
-        networkController = GameObject.Find(networkControllerString).GetComponent<NetworkingController>();
-        cashController = GameObject.Find(networkControllerString).GetComponent<CashController>();
-    }
+    private static InstanceController instanceController;
+    private static SettingsController settingsController;
 
     private static Transform GetTransform(Transform transform, params string[] Childs)
     {
@@ -48,29 +48,29 @@ public class InstanceController : MonoBehaviour
     }
 
     #region Controller
-    //internal static GameController GetGameController()
-    //{
-    //    return gameController ?? (gameController = GameObject.Find(gameControllerString).GetComponent<GameController>());
-    //}
-
     internal static GameController GetGameController()
     {
-        return gameController;
+        return gameController ?? (gameController = GameObject.Find(gameControllerString).GetComponent<GameController>());
     }
 
     internal static DialogController GetDialogController()
     {
-        return dialogController;
+        return dialogController ?? (dialogController = GameObject.Find(dialogControllerString).GetComponent<DialogController>());
     }
 
     internal static NetworkingController GetNetworkingController()
     {
-        return networkController;
+        return networkController ?? (networkController = GameObject.Find(networkControllerString).GetComponent<NetworkingController>());
     }
 
     internal static CashController GetCashController()
     {
-        return cashController;
+        return cashController ?? (cashController = GameObject.Find(cashControllerString).GetComponent<CashController>());
+    }
+
+    internal static SettingsController GetSettingsController()
+    {
+        return settingsController ?? (settingsController = GameObject.Find(settingsControllerString).GetComponent<SettingsController>());
     }
 
     #endregion
@@ -138,6 +138,25 @@ public class InstanceController : MonoBehaviour
     internal static Text GetPlayerBuildingsDialogBalance()
     {
         return GetTransform(GetDialogs().Find(BuildingsOfPlayerString), BuildingsOfPlayerBalanceString).GetComponent<Text>();
+    }
+
+    internal static Transform GetPlayerBuildingsDialogBuildingsPanel()
+    {
+        return GetTransform(GetDialogs().Find(BuildingsOfPlayerString), BuildingsOfPlayerBuildingsPanel);
+    }
+    internal static Text GetPlayerBuildingsDialogCosts()
+    {
+        return GetTransform(GetDialogs().Find(BuildingsOfPlayerString), BuildingsOfPlayerCosts).GetComponent<Text>();
+    }
+
+    internal static Text GetPlayerBuildingsDialogAmount()
+    {
+        return GetTransform(GetDialogs().Find(BuildingsOfPlayerString), BuildingsOfPlayerAmount).GetComponent<Text>();
+    }
+
+    internal static Text GetPlayerBuildingsDialogAmountLabel()
+    {
+        return GetTransform(GetDialogs().Find(BuildingsOfPlayerString), BuildingsOfPlayerAmountLabel).GetComponent<Text>();
     }
 
     #endregion

@@ -29,15 +29,15 @@ public class BuyBuilding : BuyBuyableField
         base.SetBuildingInformation(Field);
         Building Building = (Building)Field;
         ColorPanel.color = Building.ColorOfParent();
-        HotelPrice.text = GameController.GetCurrency(Building.PricePerHotel);
-        HousePrice.text = GameController.GetCurrency(Building.PricePerHouse);
+        HotelPrice.text = settingsController.FormatNumber(Building.PricePerHotel);
+        HousePrice.text = settingsController.FormatNumber(Building.PricePerHouse);
     }
 
     internal override void SetRent(int[] Rent)
     {
         for (int i = 0; i < Rent.Length; i++)
         {
-            RentText[i].text = GameController.GetCurrency(Rent[i]);
+            RentText[i].text = settingsController.FormatNumber(Rent[i]);
         }
     }
 

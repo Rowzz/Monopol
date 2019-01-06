@@ -5,11 +5,10 @@ using UnityEngine;
 public class Building : BuyableField
 {
     public int HouseCount;
-    public int HotelCount;
+    
     public int PricePerHouse;
     public int PricePerHotel;
-    public readonly int MaxHouses = 4;
-    public readonly int MaxHotels = 1;
+    public readonly int MaxHouses = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -23,22 +22,17 @@ public class Building : BuyableField
 
     internal int GetTotalHouseCount()
     {
-        return HouseCount + HotelCount * 5;
+        return HouseCount;
     }
 
     public bool IsFullyUpgraded()
     {
-        return HotelCount == 1;
+        return HouseCount == MaxHouses;
     }
 
-    public void AddHouse(int HouseCounter, int HotelCounter)
+    public void SetHouseCount(int Count)
     {
-        HouseCount += (HotelCount += HotelCounter) >= 1 ? 0 : HouseCounter;
-    }
-
-    public void removeHouse(int HouseCounter, int HotelCounter)
-    {
-        HouseCount = (HotelCounter > 0 && (HotelCount -= HotelCounter) == 0) ? 4 - HouseCounter : HouseCount - HouseCounter;
+        HouseCount = Count;
     }
 
     internal override int GetRent()
@@ -48,7 +42,7 @@ public class Building : BuyableField
 
     private int GetRentPointer()
     {
-        return OwnsEveryBuildingOfCategory() ? (1 + HouseCount + (HotelCount == 0 ? 0 : HotelCount + MaxHouses)) : 0;
+        return OwnsEveryBuildingOfCategory() ? (1 + HouseCount) : 0;
     }
 
     public override void Hover(PlayerFigure playerFigure)
@@ -66,10 +60,10 @@ public class Building : BuyableField
         {
             CashController.PayRent(this, GetRent(), ActivePlayer);
         }
-        else if (OwnsEveryBuildingOfCategory() && !IsFullyUpgraded())
-        {
-            CashController.BuyHouse(this, ActivePlayer);
-        }
+        //else if (OwnsEveryBuildingOfCategory() && !IsFullyUpgraded())
+        //{
+        //    CashController.BuyHouse(this, ActivePlayer);
+        //}
     }
 
     public Color ColorOfParent()
@@ -79,26 +73,41 @@ public class Building : BuyableField
 
     internal override int GetValue()
     {
-        return CalcValue(Mortgage, HouseCount, HotelCount);
+        return CalcValue(Mortgage, HouseCount);
     }
 
-    private int CalcValue(bool mortgage, int houseCount, int hotelCount)
+    private int CalcValue(bool mortgage, int houses)
     {
+        GetHousesAndHotels(houses, out int houseCount, out int hotelCount);
         return mortgage ? 0 : Price / 2 + hotelCount * PricePerHotel / 2 + houseCount * PricePerHouse / 2;
     }
 
-    internal override int GetValue(bool mortgage, int houseCount)
+    private void GetHousesAndHotels(int houses, out int houseCount, out int hotelCount)
     {
-        int hotels= 0, houses=0;
-        if(houseCount == (MaxHotels + MaxHouses))
+        hotelCount = 0;
+        houseCount = houses;
+        if (houseCount == MaxHouses)
         {
-            hotels = 1;
+            houseCount--;
+            hotelCount++;
         }
-        else
+    }
+
+    internal override int CalcDifference(bool mortgage, int houses)
+    {
+        if (mortgage)
         {
-            houses = houseCount;
+            houses = 0;
         }
-        return CalcValue(mortgage, houses, hotels);
+        int MortgageFactor = !mortgage && Mortgage ? -1 : mortgage && !Mortgage ? 1 : 0;
+        GetHousesAndHotels(houses, out int houseCount, out int hotelCount);
+        GetHousesAndHotels(HouseCount, out int houseCountOld, out int hotelCountOld);
+
+        int HouseFactor = houseCount < houseCountOld ? 2 : -1;
+        int HotelFactor = hotelCount < hotelCountOld ? 2 : -1;
+        
+        
+        return MortgageFactor * Price / 2 + (houseCount * PricePerHouse / HouseFactor) + hotelCount * PricePerHotel / HotelFactor;
     }
 
 
@@ -109,7 +118,7 @@ public class Building : BuyableField
 
     internal override bool HasHouses()
     {
-        return true;
+        return OwnsEveryBuildingOfCategory();
     }
 
 

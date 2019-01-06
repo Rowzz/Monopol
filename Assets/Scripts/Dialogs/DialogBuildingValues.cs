@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,17 +8,20 @@ public class DialogBuildingValues
 {
     private BuyableField Field;
     private int Houses;
-    private int Result;
+    internal int Result;
     private Text ResultText;
-    private bool Mortgage;
-    private bool AllowedToBuy; 
+    internal bool Mortgage;
+    private bool AllowedToBuy;
+    private Action UpdateAction;
+    private SettingsController settingsController { get { return InstanceController.GetSettingsController(); } }
 
-    internal DialogBuildingValues(BuyableField field, Text resultText, bool allowedToBuy)
+    internal DialogBuildingValues(BuyableField field, Text resultText, bool allowedToBuy, Action updateAction)
     {
         Field = field;
         Mortgage = Field.Mortgage;
         ResultText = resultText;
         AllowedToBuy = allowedToBuy;
+        UpdateAction = updateAction;
 
         if (Field.HasHouses()) {
             Houses = ((Building)Field).GetTotalHouseCount();
@@ -26,28 +30,37 @@ public class DialogBuildingValues
 
     
 
-    internal void SetHouses(int Count)
+    internal bool SetHouses(int Count)
     {
-        if (AllowedToBuy && Count < ((Building)Field).GetTotalHouseCount())
+        bool status;
+        int HouseCount = ((Building)Field).GetTotalHouseCount();
+        if (status = (AllowedToBuy || Count < HouseCount))
         {
             Houses = Count;
             UpdateResult();
         }
+        return status;
     }
 
-    internal void SetMortgage()
+    internal bool SetMortgage()
     {
-        Mortgage = !Mortgage;
-        UpdateResult();
+        bool status;
+        if (status = (AllowedToBuy || !Field.Mortgage))
+        {
+            Mortgage = !Mortgage;
+            UpdateResult();
+        }
+        return status;
     }
 
     private void UpdateResult()
     {
-        ResultText.text = CalcValue().ToString();
+        settingsController.FormatNumber(ResultText, CalcValue());
+        UpdateAction();
     }
 
     private int CalcValue()
     {
-        return (Result = Field.GetValue(Mortgage,Houses));
+        return (Result = Field.CalcDifference(Mortgage,Houses));
     } 
 }

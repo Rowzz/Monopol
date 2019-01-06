@@ -43,9 +43,10 @@ public class RailwayStation : BuyableField
         return mortgage ? 0 : Price / 2;
     }
 
-    internal override int GetValue(bool mortgage, int houseCount)
+    internal override int CalcDifference(bool mortgage, int houseCount)
     {
-        return CalcValue(mortgage);
+        int MortgageFactor = !mortgage && Mortgage ? -1 : 1;
+        return Price / 2 * MortgageFactor;
     }
 
 }

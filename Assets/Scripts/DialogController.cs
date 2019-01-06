@@ -28,7 +28,7 @@ public class DialogController : MonoBehaviour
         BuyRailroadDialog = InstanceController.GetBuyRailroadDialog();
         BuyUtilityDialog = InstanceController.GetBuyUtilityDialog();
         PlayerBuildingDialog = InstanceController.GetPlayerBuildingsDialog();
-        InitDialogs(BuyBuildingDialog, BuyUtilityDialog, BuyRailroadDialog);
+        InitDialogs(BuyBuildingDialog, BuyUtilityDialog, BuyRailroadDialog, PlayerBuildingDialog);
     }
 
     private void InitDialogs(params DialogDefinition[] Dialogs)
@@ -100,8 +100,9 @@ public class DialogController : MonoBehaviour
         for (int i = 0; i < Dialogs.childCount; i++)
         {
             var Transform = Dialogs.GetChild(i);
-            DialogDefinition buyableField = Transform.GetComponent<DialogDefinition>();
-            if (buyableField is BuyBuyableField && ((BuyBuyableField)buyableField).IsLocked())
+            DialogDefinition Field = Transform.GetComponent<DialogDefinition>();
+
+            if (Field != null && Field.IsLocked())
             {
                 return true;
             }
